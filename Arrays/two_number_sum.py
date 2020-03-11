@@ -8,7 +8,7 @@ def twoNumberSum(array, targetSum):
     # 		if array[idx] + array[idx2] == targetSum:
     # 			return [array[idx], array[idx2]]
 
-    # improved. Keep a dictionary to store each number you're looking for and if you find it, just return the pair
+    # optimized: Keep a dictionary to store each number you're looking for and if you find it, just return the pair
     passed = {}
     for item in array:
         if targetSum - item in passed:
