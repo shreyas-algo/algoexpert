@@ -1,6 +1,7 @@
-# Approach used: Break dowmn in a problem of two-sum. For every number, create a 2_sum_target (called target in code) which you look for in the remaining array. The question basically becomes n iterations of two-sum
+# I. Approach used: Break dowmn in a problem of two-sum. For every number, create a 2_sum_target (called target in code) which you look for in the remaining array. The question basically becomes n iterations of two-sum
 # Sort & sorted() used to satisfy the given condition of result array being sorted
-
+# Time complexity: O(N*N)
+# Space complexity: O(N*N) -- passed set of ~N length stored for every number
 def threeNumberSum(array, targetSum):
     result = []
 	length = len(array)
@@ -13,3 +14,7 @@ def threeNumberSum(array, targetSum):
 				result.append([array[idx], target - array[idx2], array[idx2]])
 			passed.add(array[idx2])
     return sorted(result)
+
+# II. Approach used: 
+# Time complexity: O(N*N)
+# Space complexity: O(N)
