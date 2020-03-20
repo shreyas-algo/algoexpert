@@ -1,3 +1,5 @@
+# Approach: Sort second array and for every element in first array, do a binary search for it in second array. Keep track of the min_difference value and return in the end
+# Analysis: O(n log m) {n binary searches} + O(m log m) {sorting second array} 
 def smallestDifference(arrayOne, arrayTwo):
     # sort arrays
     # arrayOne.sort()
@@ -30,7 +32,6 @@ def smallestDifference(arrayOne, arrayTwo):
             else:
                 # go right
                 low = mid + 1
-                
     return result
 
 print(smallestDifference([-1, 5], [-1, 4]))
