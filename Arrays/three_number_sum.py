@@ -15,6 +15,28 @@ def threeNumberSum(array, targetSum):
 			passed.add(array[idx2])
     return sorted(result)
 
-# II. Approach used: 
+# II. Approach used: Sort & Sliding Window
 # Time complexity: O(N*N)
 # Space complexity: O(N)
+# Algoexpert solution. No extra space. Sliding window
+def threeNumberSum(array, targetSum):
+    result = []
+    array.sort()
+    length = len(array)
+    for idx in range(length - 1):
+        low = idx + 1
+        high = length - 1
+        target = targetSum - array[idx]
+        while low < high:
+            print(low, high)
+            sum = array[low] + array[high]
+            if sum == target:
+                result.append([array[idx], array[low], array[high]])
+                # when found, both indices can be changed as it is given that the array consists of unique values. So once a combination is found, it isn't possible to use one of the numbers can't be used again without the other number
+                low += 1
+                high -= 1
+            elif sum < target:
+                low += 1
+            else:
+                high -= 1
+    return result
