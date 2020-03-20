@@ -4,9 +4,9 @@ def threeNumberSum(array, targetSum):
 	array.sort()
 	for idx in range(length-1):
 		target = targetSum - array[idx]
-		passed = set()
+		expected = set()
 		for idx2 in range(idx+1, length):
-			if target - array[idx2] in passed:
+			if array[idx2] in expected:
 				result.append([array[idx], target - array[idx2], array[idx2]])
-			passed.add(array[idx2])
-    return result
+			expected.add(target - array[idx2])
+    return sorted(result)
