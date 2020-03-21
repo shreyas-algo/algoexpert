@@ -10,6 +10,7 @@ def findThreeLargestNumbers(array):
 	min_int = -sys.maxsize - 1  # -9223372036854775808
 	# todo: change if to assert
 	if length > 2:
+        # todo: optimize: note that you can also use insert() directly instead of log by creating the max tracking logic (something like insertion sort)
 		max_array = sorted([array[0], array[1], array[2]], reverse=True)	# sorting 3 numbers in some constant time: 3 log 3
 		print(max_array)
 		max_array.append(min_int)	# create temp slot for compare
