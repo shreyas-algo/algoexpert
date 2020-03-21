@@ -15,7 +15,7 @@ def threeNumberSum(array, targetSum):
 			passed.add(array[idx2])
     return sorted(result)
 
-# II. Approach used: Sort & Sliding Window
+# II. Approach used: Sort & Sliding Window / 2 pointer
 # Time complexity: O(N*N)
 # Space complexity: O(N)
 # Algoexpert solution. No extra space. Sliding window
