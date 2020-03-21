@@ -2,7 +2,7 @@
 # O (NlogN)
 
 # Approach II: Do a single pass and maintain a max-array of size three. Check every element in the array with the max-array and maintain highest 3 at all times
-# O (N)
+# O (kN) ~ O(N) : coz you're sorting 4 numbers (some k operations) - n times
 import sys
 def findThreeLargestNumbers(array):
 	# init
