@@ -16,9 +16,10 @@ def smallestDifference(arrayOne, arrayTwo):
     for item in arrayOne:
         # binary search closest value to item in second array
         low = 0
-        high = len2 - 1
+        high = len2 - 1 # Note: high is initialized to last INDEX of array. Not length
         mid = int((low + high) / 2)
         while low <= high:
+            # Note: remember to recalculate mid in binary search code. infinite loop by silly mistake
             mid = int((low + high) / 2)
             if abs(arrayTwo[mid] - item) <= closest_value:
                     closest_value = abs(arrayTwo[mid] - item)
