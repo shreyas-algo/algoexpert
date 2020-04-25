@@ -4,11 +4,11 @@ def shiftedBinarySearch(array, target):
     arr_len = len(array)
     curr_len = arr_len
     end = arr_len - 1
-    count = 0
+    # count = 0
     if start == 0:
         end = start - 1
     # keep searching unless there are elements in the search space
-    while curr_len > 0 and count != 10:
+    while curr_len > 0:
         # notice through an example -- mid indexing is always based on start
         mid = (start + int(curr_len/2))%arr_len
         # print("Current length: {}".format(curr_len))
@@ -26,7 +26,7 @@ def shiftedBinarySearch(array, target):
         else:
             curr_len = ((end + arr_len) - start) + 1
         # print("?> Count: {}".format(count))
-        count += 1
+        # count += 1
     return result
 
 def findShiftIndex(array):
@@ -34,3 +34,4 @@ def findShiftIndex(array):
   return 5
 
 print(shiftedBinarySearch([45, 61, 71, 72, 73, 0, 1, 21, 33, 45], 33))
+print(shiftedBinarySearch([33, 45, 45, 61, 71, 72, 73, 0, 1, 21], 33))
