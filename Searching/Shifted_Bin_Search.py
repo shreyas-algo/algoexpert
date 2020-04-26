@@ -1,9 +1,12 @@
 # Important learnings / observations:
 # 1. mid can directly be calculated if you know start_index & length. You don't really need to know the end (eases calculation in current problem)
 # 2. length always changes to length / 2
+# These 2 observations really help visualize the problem and make calculations easier. As now you only need to worry about proper mid indexing when the start is at an offset
+
 def shiftedBinarySearch(array, target):
     result = -1
     start = findShiftIndex(array)
+    print("Start: {}".format(start))
     arr_len = len(array)
     curr_len = arr_len
     end = arr_len - 1
@@ -19,6 +22,7 @@ def shiftedBinarySearch(array, target):
         if array[mid] == target:
             return mid
         elif array[mid] > target:   # check left
+            # not really requied but kept for completeness. mid calculation only done by start and length
             end = mid - 1
         else:
             start = mid + 1         # check right
@@ -33,9 +37,18 @@ def shiftedBinarySearch(array, target):
         count += 1
     return result
 
+# find index where origin has shifted to. it'll basically be a dip
+# todo: add logic to handle equality
 def findShiftIndex(array):
-  # TODO: create logic to find shift point
-  return 5
+  array_len = len(array)
+  if array_len == 0: return 0
+  current = array[0]
+  for idx in range(1, array_len):
+    if array[idx] < current:
+        # shift spotted
+        return idx
+    current = array[idx]
+  return 0
 
 print(shiftedBinarySearch([45, 61, 71, 72, 73, 0, 1, 21, 33, 45], 33))  # 8
 print(shiftedBinarySearch([33, 45, 45, 61, 71, 72, 73, 0, 1, 21], 33))  # 0
