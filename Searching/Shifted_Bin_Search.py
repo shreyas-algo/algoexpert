@@ -3,6 +3,7 @@
 # 2. length always changes to length / 2
 # These 2 observations really help visualize the problem and make calculations easier. As now you only need to worry about proper mid indexing when the start is at an offset
 
+# Remember: For Bin search: mid is always `(start + end) / 2` ie it is (len - 1) / 2 
 
 def shiftedBinarySearch(array, target):
     result = -1
