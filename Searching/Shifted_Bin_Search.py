@@ -5,32 +5,23 @@
 
 # Remember: For Bin search: mid is always `(start + end) / 2` ie it is (len - 1) / 2 
 
+# Status - All test cases passing on AlgoExpert
+
 def shiftedBinarySearch(array, target):
     result = -1
     start = findShiftIndex(array)
-    # print("Start: {}".format(start))
     arr_len = len(array)
     curr_len = arr_len
-    count = 0
-    end = start - 1
-    if start == 0:
-        end = arr_len - 1
     # keep searching unless there are elements in the search space
     while curr_len > 0:
         # notice through an example -- mid indexing is always based on start
         mid = (start + int((curr_len-1)/2))%arr_len
-        # print("Current length: {}".format(curr_len))
-        # print("checking {}: {}".format(mid, array[mid]))
         if array[mid] == target:
             return mid
-        elif array[mid] > target:   # check left
-            # not really requied but kept for completeness. mid calculation only done by start and length
-            end = mid - 1
-        else:
-            start = mid + 1         # check right
-            # print("Right. & new start: {}".format(start))
+        elif array[mid] < target:   # check right
+            start = mid + 1        
+            # Notice: It should actually be "(mid + 1) % arr_len" but it still works cz mid calculation above done with % arr_len
         curr_len = int(curr_len/2)
-        count += 1
     return result
 
 # find index where origin has shifted to. it'll basically be a dip
@@ -46,14 +37,48 @@ def findShiftIndex(array):
     current = array[idx]
   return 0
 
+  #########################################################################
 
-print(shiftedBinarySearch([45, 61, 71, 72, 73, 0, 1, 21, 33, 45], 33))  # 8
-print(shiftedBinarySearch([33, 45, 45, 61, 71, 72, 73, 0, 1, 21], 33))  # 0
-print(shiftedBinarySearch([33, 45, 45, 61, 71, 72, 73, 0, 1, 21], 0))  # 7
-print(shiftedBinarySearch([45, 61, 71, 72, 73, 0, 1, 21, 33, 45], 61))  # 1 
-print(shiftedBinarySearch([45, 61, 71, 72, 73, 0, 1, 21, 33, 45], 610))  # -1 
+
+# print(shiftedBinarySearch([46, 61, 71, 72, 73, 0, 1, 21, 33, 46], 33))  # 8
+# print(shiftedBinarySearch([46, 61, 71, 72, 73, 0, 1, 21, 33, 46], 73))  # 4
+# print(shiftedBinarySearch([33, 45, 45, 61, 71, 72, 73, 0, 1, 21], 33))  # 0
+# print(shiftedBinarySearch([33, 45, 45, 61, 71, 72, 73, 0, 1, 21], 0))  # 7
+# print(shiftedBinarySearch([45, 61, 71, 72, 73, 0, 1, 21, 33, 45], 61))  # 1 
+# print(shiftedBinarySearch([45, 61, 71, 72, 73, 0, 1, 21, 33, 45], 610))  # -1 
 print(shiftedBinarySearch([0, 1, 21, 33, 45, 65, 99], 99))  # 6
-print(shiftedBinarySearch([5, 23, 111, 1], 111))  # 2
+# print(shiftedBinarySearch([5, 23, 111, 1], 111))  # 2
+
+def v1shiftedBinarySearch(array, target):
+    result = -1
+    start = findShiftIndex(array)
+    # print("Start: {}".format(start))
+    arr_len = len(array)
+    curr_len = arr_len
+    count = 0
+    end = start - 1
+    if start == 0:
+        end = arr_len - 1
+    # keep searching unless there are elements in the search space
+    while curr_len > 0:
+        # notice through an example -- mid indexing is always based on start
+        mid = (start + int((curr_len-1)/2))%arr_len
+        print("Current length: {}".format(curr_len))
+        print("checking {}: {}".format(mid, array[mid]))
+        if array[mid] == target:
+            return mid
+        elif array[mid] > target:   # check left
+            # not really requied but kept for completeness. mid calculation only done by start and length
+            end = mid - 1
+            # Notice: should actually be  (mid - 1) >= 0 ? mid - 1 : arr_len - 1
+        else:
+            start = mid + 1         # check right
+            # Notice: It should actually be "(mid + 1) % arr_len" but it still works cz mid calculation above done with % arr_len
+            print("Right. & new start: {}".format(start))
+        curr_len = int(curr_len/2)
+        # curr_len = int((start + end) / 2) % arr_len
+        count += 1
+    return result
 
 
 # with all comments and logic
