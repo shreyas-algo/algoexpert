@@ -5,6 +5,7 @@ class BinaryTree:
         self.left = None
         self.right = None
 
+# Approach: calculated sum in DFS fashion. Appened array on leaf nodes. Passed curr_sum as parameter
 # Status - Does not run succcesfully when "Run Tests" used on Algoexpert. But works when single test case is populated and checked
 # Update: Added print and compared to test cases. It looks good. Possibly the issue is how Algoexpert is calling the function
 # curr_sum = 0

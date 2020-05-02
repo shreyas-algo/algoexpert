@@ -1,3 +1,5 @@
+# Approach: Go DFS & simplay keep swapping right with left
+# O(N) time & O(1) space
 # Status: all test cases accepted
 def invertBinaryTree(tree):
     if tree == None:
