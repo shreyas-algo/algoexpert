@@ -2,7 +2,13 @@
 # O(N*N) time - for every item, you'll traverse the whole array in case if it's a single cycle array (True case)
 
 # Optimization: Think about it. You dont actually need to check all indexes. if you start from 0 and reach 0 without any repetition - that means the path is a single cycle which does not repeat any index. Which means no matter where you start you will have a successful single cycle
-# O(N) time & O(1) space
+# O(N) time & O(N) space
+
+# Todo: Optimization of using O(1) space
+# Notice that you do not need the passed array: If there is a cycle in between --
+# When count == arr_len -- you will not arrive at 0 again (draw wxample and check) which means False (some inner cycle exists)
+# Is this true? Can you break it?
+# Try: 
 
 def hasSingleCycle(array):
     arr_len = len(array)
@@ -19,6 +25,7 @@ def hasSingleCycle(array):
         else:
         # visit next, if all good
             passed.append(curr_idx)
+            # no handle added for -curr_idx cz python handles it -- you can handle it easily using ternary operator :  `curr_idx = curr_idx if curr_idx >= 0 else (arr_len + curr_idx)` -- use this after the mod thing as a separate instruction 
             curr_idx = (curr_idx + array[curr_idx]) % arr_len
         count += 1
     return True
