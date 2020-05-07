@@ -17,5 +17,4 @@ class Node:
 		array.append(self.name)
 		for child in self.children:
 			child.depthFirstSearch(array)
-		
 		return array
