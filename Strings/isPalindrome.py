@@ -1,4 +1,8 @@
 # the video explanantion on algoexpert is pretty cool. go watch it
+# it also discusses tail recursion which is great
+# IMP: when you're using recursion always mention that the solution is going to use extra memory due to the call stack 
+# and then maybe mention tail recursion optimization in code (last line should be recursive call) and also by compiler (some compliers optimize even when recursive call is not last statement)
+
 # solution: self
 def isPalindrome(string):
     lo = 0
