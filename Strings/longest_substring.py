@@ -1,10 +1,18 @@
-# Approach: Keep 2 pointers. one init from start, another from end.
+# Approach II: check maxPalindrome for every index as fixed start index. Overall max wins.
+# O(N*N)
+
+
+# Approach I: Keep 2 pointers. one init from start, another from end.
 # case: when start == end: retain current_length as longest. i+1, end-1
 # case: when start != end: (decide which side has a possible palindrome)
 # if start == end - 1: end -= 1
 # if start+1 == end: start += 1 
 # move both start & end if neither 
-def longestPalindromicSubstring(string):
+# Complexity: O(N)
+
+# Result: Flawed. Good attempt. But breaks for abaxyzzyxf
+# Problem: Updating both indices works only when values match. When none of the values match you can't move both ahead because one of them may be a part (start or end) of a possible palindrome
+def longestPalindromicSubstringOld(string):
     max_length = len(string)
     palindromeFound = False
     start = 0
