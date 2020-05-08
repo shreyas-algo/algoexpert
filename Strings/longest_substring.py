@@ -1,10 +1,10 @@
 # Approach II: check maxPalindrome for every index as fixed start index. Overall max wins.
+# O(N*N)
+# All this done to avoid complexity of O(N*N*N) which would be the case if we did palindrome check for every start index to every possible length
 def longestPalindromicSubstring(string):
 	string_len = len(string)
-	# current_str_end = string_len - 1
 	max_palindrome_length = 1
 	current_palindrome_length = 1
-	# palStartIdx = 0
 	palEndIdx = 0
 	resultStartIdx = 0
 	resultEndIdx = 0
@@ -14,35 +14,27 @@ def longestPalindromicSubstring(string):
 		end = string_len - 1
 		while curr_start < end:
 			if string[curr_start] == string[end]:
-				print("yes")
 				if not palindromeFound:
+					# start expecting palindrome. It will be overridden if palindrome not found
 					palindromeFound = True
-					# current_str_end = end
-					# current_palindrome_length = end - start + 1
-					print("setting pal end")
-					# print(start)
-					print(end)
 					palEndIdx = end
 				curr_start += 1
 				end -= 1
 			else:
-				# print("else")
-				# print(start)
-				# print(end)
 				if palindromeFound:
 					palindromeFound = False
 					# move start back to original start
 					curr_start = start
 				else:
 					end -= 1 
-					
+		
+		# if after the while loop, some palindrome was found
 		if palindromeFound:
 			current_palindrome_length = palEndIdx - start + 1
 			if current_palindrome_length > max_palindrome_length:
 				max_palindrome_length = current_palindrome_length
 				resultStartIdx = start
 				resultEndIdx = palEndIdx
-		print("***")
 	return string[resultStartIdx: resultEndIdx+1]
 
 
