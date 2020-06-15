@@ -1,3 +1,10 @@
+# Approach:
+# 1. for every character, get ascii code
+# 2. deduct a's ascii code to get base to 0 (so that mod 26 works as expected or work with mod(26 + ascii(a)))
+# 3. for every code, add given key
+# 4. mod by 26 to make the code shift revolve after z
+# 5. add base again to get the actual character
+
 def caesarCipherEncryptor(string, key):
     result = []
     # TODO: Instead of base calculation twice -- you can simply do `x % (26+base)`
