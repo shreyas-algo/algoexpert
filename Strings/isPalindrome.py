@@ -1,3 +1,5 @@
+# Approach: 2 pointer. start & end and keep checking until either one mismatches (not a palindrome) or lo==hi (is a palindrome)
+
 # the video explanantion on algoexpert is pretty cool. go watch it
 # it also discusses tail recursion which is great
 # IMP: when you're using recursion always mention that the solution is going to use extra memory due to the call stack 

@@ -44,7 +44,7 @@ def longestPalindromicSubstring(string):
 # if start == end - 1: end -= 1
 # if start+1 == end: start += 1 
 # move both start & end if neither 
-# Complexity: O(N)
+# Complexity: O(N) [FLAWED]
 
 # Result: Flawed. Good attempt. But breaks for abaxyzzyxf
 # Problem: Updating both indices works only when values match. When none of the values match you can't move both ahead because one of them may be a part (start or end) of a possible palindrome
