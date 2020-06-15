@@ -20,11 +20,14 @@ def getKeyForWord(word):
 		char_count = key_dict.get(char, 0)
 		key_dict[char] = char_count + 1
 	# create the key
-    # TODO: Instead of `str +=`, use res_array & then ``"".join(res_array)` approach coz str+ takes O(n) time every time you add a character due to the underlying implementation (read more)
-	key = ""
+	key = []
 	for k in sorted(key_dict.keys()):
-		key += k + str(key_dict[k])
-	return key
+		key.append(k + str(key_dict[k]))
+	return "".join(key)
+		
+				
+			
+
 		
 				
 			
