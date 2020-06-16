@@ -1,8 +1,27 @@
-# Approach I: Create a copy array of same size (initialized with 0). Iterate through the given array and start putting the target element at back of the array one by one and start putting other elements from start
-# Complexity: O(N) time & O(N) space
+# Approach: two pointer: start and end. look at start and swap with end if start != toMove. Shift both start and end accordingly 
+def moveElementToEnd(array, toMove):
+    end = getLastSwappablePosition(array, toMove)
+    for idx, item in enumerate(array):
+        print(array)
+        print(idx,end)
+        if idx >= end:
+            break
+        if item == toMove:
+            swap(array, idx, end)
+            end -= 1
+    return array
 
-# Approach II: Sort so that all target element is together and then swap elements that come after the target element 
-# Complexity: O(N log N) time & O(1) space
+def swap(array, idx, end):
+	temp = array[idx]
+	array[idx] = array[end]
+	array[end] = temp
 
-# **Approach III: 2 pointers / sliding window: Traverse thorugh the array and keep swapping other numbers with last non-target element you saw
-# Complexity: O(N) time & O(1) space (Well done!)
+# get last postion of a non-target item in a list
+# returns 0 if everything matches target
+def getLastSwappablePosition(array, target):
+	for idx in reversed(range(len(array))):
+		if array[idx] != target:
+			return idx
+	# typically should be -1 : as it denotes no match found. But implemented this way to reduce extra logic in parent call
+	return 0
+	
