@@ -2,13 +2,11 @@
 def moveElementToEnd(array, toMove):
     end = getLastSwappablePosition(array, toMove)
     for idx, item in enumerate(array):
-        print(array)
-        print(idx,end)
         if idx >= end:
             break
         if item == toMove:
             swap(array, idx, end)
-            end -= 1
+            end = getLastSwappablePosition(array, toMove)   # Old bug: end -= 1
     return array
 
 def swap(array, idx, end):
