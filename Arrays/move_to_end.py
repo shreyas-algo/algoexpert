@@ -24,4 +24,10 @@ def getLastSwappablePosition(array, target):
 			return idx
 	# typically should be -1 : as it denotes no match found. But implemented this way to reduce extra logic in parent call
 	return 0
+
+# Important: Test case breaking:
+# {"array": [5, 1, 2, 5, 5, 3, 4, 6, 7, 5, 8, 9, 10, 11, 5, 5, 12], "toMove": 5}
+# Notice line 11: `end -= 1` and the problem is after a swap the last swappable position need not be end -1 coz end-1 may be a target element itslef!
+# Learning: Need to be careful while coding. Do not just write stuff taking reference from old problems you've sold. Make sure what you write makes sense!
+
 	
