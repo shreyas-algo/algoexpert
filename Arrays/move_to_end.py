@@ -1,4 +1,6 @@
 # Approach: two pointer: start and end. look at start and swap with end if start != toMove. Shift both start and end accordingly 
+# Analysis: O(N) time, O(1) space
+
 def moveElementToEnd(array, toMove):
     end = getLastSwappablePosition(array, toMove)
     for idx, item in enumerate(array):
