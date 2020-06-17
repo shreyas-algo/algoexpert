@@ -1,4 +1,28 @@
-# Approach: two pointer: start and end. look at start and swap with end if start != toMove. Shift both start and end accordingly 
+# Approach II: 2 pointers start and end. End always stays on a swappable position & move array[start] if it doesn't match toMove. No need to loop through array. Use while condition. Cleaner code & O(N). No need to getLastSwappable position (as in Approach I). Use end increment accordingly
+# Analysis: O(N) time, O(1) space
+
+def moveElementToEnd(array, toMove):
+    start = 0
+    end = len(array) - 1
+    while start < end:
+        if array[end] == toMove:
+            # if array[end] is already a target element, keep moving from behind until you reach a non-target element
+            end -= 1
+            continue
+        if array[start] == toMove:
+            swap(array, start, end)
+            end -= 1
+        start += 1
+    return array
+
+    def swap(array, idx, end):
+        temp = array[idx]
+        array[idx] = array[end]
+        array[end] = temp
+
+
+
+# Approach I: two pointer: start and end. look at start and swap with end if start != toMove. Shift both start and end accordingly 
 # Analysis: O(N*N) time, O(1) space
 # O(N*N) because getLastSwappablePosition() can take O(N) time in worst case -- Imagine a very long array with all the target elements in the middle. For every element, you'll run getLastSwappablePosition which will take ~O(N) time 
 
