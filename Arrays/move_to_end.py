@@ -1,5 +1,6 @@
 # Approach: two pointer: start and end. look at start and swap with end if start != toMove. Shift both start and end accordingly 
-# Analysis: O(N) time, O(1) space
+# Analysis: O(N*N) time, O(1) space
+# O(N*N) because getLastSwappablePosition() can take O(N) time in worst case -- Imagine a very long array with all the target elements in the middle. For every element, you'll run getLastSwappablePosition which will take ~O(N) time 
 
 def moveElementToEnd(array, toMove):
     end = getLastSwappablePosition(array, toMove)

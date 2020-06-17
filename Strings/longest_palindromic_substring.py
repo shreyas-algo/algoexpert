@@ -3,13 +3,17 @@
 # All this done to avoid complexity of O(N*N*N) which would be the case if we did palindrome check for every start index to every possible length
 def longestPalindromicSubstring(string):
 	string_len = len(string)
-	max_palindrome_length = 1
-	current_palindrome_length = 1
+	# to keep track of current palindromic substring end. Start: start
 	palEndIdx = 0
+	# to keep track of overall max length
+	current_palindrome_length = 1
+	max_palindrome_length = 1
+	# to keep track of overall max result indices
 	resultStartIdx = 0
 	resultEndIdx = 0
 	for start, value in enumerate(string):
 		palindromeFound = False
+		# curr_start & end to iterate through the string (all possible solutions starting at start) and check palindromic condition
 		curr_start = start
 		end = string_len - 1
 		while curr_start < end:
@@ -25,10 +29,11 @@ def longestPalindromicSubstring(string):
 					palindromeFound = False
 					# move start back to original start
 					curr_start = start
+					# do not move end as it may match with `start` and create a palindrome
 				else:
 					end -= 1 
 		
-		# if after the while loop, some palindrome was found
+		# if after the while loop, some palindrome was found -- this is a palindrome which begins with start & ends at palEndIdx
 		if palindromeFound:
 			current_palindrome_length = palEndIdx - start + 1
 			if current_palindrome_length > max_palindrome_length:
