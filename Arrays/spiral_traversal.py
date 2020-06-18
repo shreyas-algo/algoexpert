@@ -1,6 +1,7 @@
 # Approach: 
 # * Draw on paper while keeping row & column header to visualize what is happening
 # * Keep track of boundaries on all 4 sides and when a boundary is hit, change direction clockwise (for spiral) and update row, col accordingly
+
 # Analysis: O(MxN)  [Matrix size]
 # Remark: GREAT! Solved using clean abstracted code
 
@@ -13,8 +14,8 @@ def spiralTraverse(array):
     direction = "right"
     row, col = 0, 0
     # boundaries
-    top_boundary = 0
-    left_boundary = -1
+    top_boundary = 0    # coz row: 0 is being printed initially
+    left_boundary = -1  # coz left (col: 0) will need to be printed so the init left boundary is left of matrix' left i.e. -1
     right_boundary = len(array[0])	# assumed symmetric arrays and at least one row
     bottom_boundary = len(array)
     # result mapping
