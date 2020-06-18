@@ -5,8 +5,10 @@
 
 # Complexity Analysis:
 # List length: N, Word length: k
+# Overall: O(N * k log k) ~ O(N) if number of words in the language, k considered constant and not comparable to the list length
 
-# Overall: O(N * k log k)
+# Learning: append() returns None and not the resulting new array. Ref: Line 20
+
 def groupAnagrams(words):
     anagram_dict = {}
     # O(N)

@@ -3,6 +3,9 @@
 
 # Approach: Get order pattern by checking first two unequal numbers. Then iterate the array again checking that all elements follow the same pattern (increasing or decreasing)
 # Analysis: O(2N) = O(N)
+
+# Learning: smart use of continue inside a loop to simulate a pseudo loop
+
 def isMonotonic(array):
     arr_len = len(array)
     order = checkOrder(array, arr_len)

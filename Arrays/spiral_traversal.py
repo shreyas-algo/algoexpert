@@ -1,3 +1,12 @@
+# Approach: 
+# * Draw on paper while keeping row & column header to visualize what is happening
+# * Keep track of boundaries on all 4 sides and when a boundary is hit, change direction clockwise (for spiral) and update row, col accordingly
+# Analysis: O(MxN)  [Matrix size]
+# Remark: GREAT! Solved using clean abstracted code
+
+# Learning: string, int & tuple parameters are passed-by-value whereas dictionaries, lists etc are passed-by-reference i.e when we change the argumemt in function, it is changed in the parent where it is called
+# TODO: Watch video on Algoexpert
+
 def spiralTraverse(array):
     matrix_len = len(array) * len(array[0])
     # init
@@ -13,7 +22,6 @@ def spiralTraverse(array):
     spiral.append(array[row][col])
     spiral_length = 1
     while spiral_length < matrix_len:
-        
         row, col = getNextPoint(direction, row, col)
         # print(direction, row, col)
         if direction == "right" and exceedingRight(col, right_boundary):
@@ -30,7 +38,6 @@ def spiralTraverse(array):
         
         # technically not required as length check used in while
         if (row, col) == (-1, -1):
-            print("Issue")
             break
         spiral.append(array[row][col])
         spiral_length += 1
@@ -59,7 +66,6 @@ def exceedingTop(row, top_boundary):
 	
 # pivoting functions
 def pivotDown(row, col, direction, right_boundary, bottom_boundary):
-	print("pivotDown called")
 	if exceedingDown(row+1, bottom_boundary):
 		return (-1, -1)
 	direction = "down"
@@ -67,7 +73,6 @@ def pivotDown(row, col, direction, right_boundary, bottom_boundary):
 	return (direction, right_boundary, row+1, col-1)
 
 def pivotLeft(row, col, direction, bottom_boundary, left_boundary):
-	print("pivotLeft called")
 	if exceedingLeft(col-1, left_boundary):
 		return (-1, -1)
 	direction = "left"
@@ -75,7 +80,6 @@ def pivotLeft(row, col, direction, bottom_boundary, left_boundary):
 	return (direction, bottom_boundary, row-1, col-1)
 
 def pivotTop(row, col, direction, left_boundary, top_boundary):
-	print("pivotTop called")
 	if exceedingTop(col-1, top_boundary):
 		return (-1, -1)
 	direction = "top"
@@ -83,7 +87,6 @@ def pivotTop(row, col, direction, left_boundary, top_boundary):
 	return (direction, left_boundary, row-1, col+1)
 
 def pivotRight(row, col, direction, top_boundary, right_boundary):
-	print("pivotRight called:", row, col)
 	if exceedingRight(col+1, right_boundary):
 		return (-1, -1)
 	direction = "right"
