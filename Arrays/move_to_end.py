@@ -1,7 +1,7 @@
+# Move all occurences of a given value at the end of a given array (in-place)
 # Approach II: 2 pointers start and end. End always stays on a swappable position & move array[start] if it doesn't match toMove. No need to loop through array. Use while condition. Cleaner code & O(N). No need to getLastSwappable position (as in Approach I). Use end increment accordingly
 # Analysis: O(N) time, O(1) space
 
-# Approach II: 2 pointers start and end. No need to loop through array. Use while condition. Cleaner code & O(N). No need to getLastSwappable position. Use end increment accordingly
 def moveElementToEnd(array, toMove):
     start = 0
     end = len(array) - 1
