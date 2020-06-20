@@ -1,4 +1,47 @@
-# Approach: 
+# Approach II: Keep appending matrix boundary until available. Move to inner matrix once outer boundary done
+# less complicated code
+def spiralTraverse(array): 
+    sRow = 0
+    eRow = len(array)-1
+    sCol = 0
+    eCol = len(array[0])-1
+    spiral = []
+    # sprial_len = 0
+    while sRow <= eRow and sCol <= eCol:
+        appendTopRow(sRow, sCol, eCol, array, spiral)
+        appendRightCol(eCol, sRow+1, eRow, array, spiral)
+        appendBottomRow(eRow, eCol-1, sCol, array, spiral)
+        appendLeftCol(sCol, eRow-1, sRow+1, array, spiral)
+        # move to inner matrix
+        sRow += 1
+        sCol += 1
+        eRow -= 1
+        eCol -= 1
+    return spiral
+
+    def appendTopRow(sRow, sCol, eCol, array, spiral):
+        while sCol <= eCol:
+            spiral.append(array[sRow][sCol])
+            sCol += 1
+
+    def appendRightCol(eCol, sRow, eRow, array, spiral):
+        while sRow <= eRow:
+            spiral.append(array[sRow][eCol])
+            sRow += 1
+
+    def appendBottomRow(eRow, eCol, sCol, array, spiral):
+        while eCol >= sCol:
+            spiral.append(array[eRow][eCol])
+            eCol -= 1
+        
+    def appendLeftCol(sCol, eRow, sRow, array, spiral):
+        while eRow >= sRow:
+            spiral.append(array[eRow][sCol])
+            eRow -= 1
+	
+
+
+# Approach I: 
 # * Draw on paper while keeping row & column header to visualize what is happening
 # * Keep track of boundaries on all 4 sides and when a boundary is hit, change direction clockwise (for spiral) and update row, col accordingly
 
