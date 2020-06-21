@@ -1,5 +1,8 @@
 # Approach II: Find all peak indices. For every peak, try to expand on left & right as far as the decreasing slope satisfies. Return calculated peak_length
 # Analysis: O(2N) ~ O(N) - notice that no two peak expansions will intersect for more than 1 point - because right branch of a peak can't be the left branch of another peak. strictly increasing and strictly decreasing are mutually exclusive. So total iteration for expansion's length check will go around ~N items
+# O(N) space due to peaks array
+
+# Notice: that an improvement is possible here which is not storing the peaks array but doing the branch length calculation whenever you find a peak. (AlgoExpert) Can add that update here
 
 # Learning: Try different approaches when one becomes too difficult to manage.
 def longestPeak(array):
