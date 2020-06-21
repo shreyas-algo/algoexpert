@@ -1,5 +1,11 @@
 # Approach II: Keep appending matrix boundary until available. Move to inner matrix once outer boundary done
 # less complicated code
+
+# Learning: Think multiple ways to solve a problem. Also, it's better to work with index equality sometimes
+# Note: Following code doesn't work for two edge cases: a) when there's single row left in middle (3x4 matrix) b) when there's single column in the middle of the matrix. Happens because when sRow=eRow & single row, both topRow printer & bottomRow printer will print first element
+# Possible solutions:
+# a) keep check on spiral_length == array_len and check this every time you append in spiral to avoid duplicates
+# b) add single row & single column specific condition in bottomRow & leftColumn printer: `if sRow == eRow: break` 
 def spiralTraverse(array): 
     sRow = 0
     eRow = len(array)-1
