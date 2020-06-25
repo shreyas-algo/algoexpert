@@ -1,8 +1,38 @@
 # Approach III: Algoexpert: Notice that for any mid, at least one of right or left will be properly sorted (as the whole array is sorted). Use this knowledge and number's comparison to boundaries to pivot between left or right component
-# TODO
+# O(log N)
 
-
-
+# Important Observation: 
+# 1) Any position of mid (or any index) for a "shifted sorted array" will always split the array in at least one sorted half (the other will have a dip and rise)
+# 2) This knowledge can be used to check whether the element can exist in the sotrted half. If yes, search sorted half, If not, search the other half
+# a) Notice that if a[left] <= a[mid], then left side is sorted -- Draw and check -- because if a[left] <= a[mid], there cannot be a dip and rise (shifted origin) in the left half because then every element to right of mid will be higher than mid and thus higher than left. Thus the array is not sorted, then
+# b) Similarly, if a[mid] <= a[right], right is sorted -- though not required -- will be in else as one half will definitely be sorted
+def shiftedBinarySearch(array, target):
+	left = 0
+	right = len(array) - 1
+	while left <= right:
+		mid = (left + right) // 2
+		if array[mid] == target:
+			return mid
+		# left half is sorted half
+		elif array[left] <= array[mid]:
+			# check if element exists in left half range
+			if target >= array[left] and target < array[mid]:
+				# explore left
+				right = mid - 1
+			else:
+				# explore right
+				left = mid + 1
+		# right half is sorted
+		else:
+			# check if element exists in right half range
+			if target > array[mid] and target <= array[right]:
+				# explore right
+				left = mid + 1
+			else:
+				# explore left
+				right = mid - 1	
+	return -1
+			
 
 #########################################################################
 
