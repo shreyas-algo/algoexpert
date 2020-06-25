@@ -6,6 +6,8 @@
 # 2) This knowledge can be used to check whether the element can exist in the sotrted half. If yes, search sorted half, If not, search the other half
 # a) Notice that if a[left] <= a[mid], then left side is sorted -- Draw and check -- because if a[left] <= a[mid], there cannot be a dip and rise (shifted origin) in the left half because then every element to right of mid will be higher than mid and thus higher than left. Thus the array is not sorted, then
 # b) Similarly, if a[mid] <= a[right], right is sorted -- though not required -- will be in else as one half will definitely be sorted
+
+# Learning: Always analyze your solutions. Finding a solution may not be good enough if it beats the complexity bound / purpose.
 def shiftedBinarySearch(array, target):
 	left = 0
 	right = len(array) - 1
