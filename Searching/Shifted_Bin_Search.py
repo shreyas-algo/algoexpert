@@ -1,3 +1,22 @@
+# Approach III: Algoexpert: Notice that for any mid, at least one of right or left will be properly sorted (as the whole array is sorted). Use this knowledge and number's comparison to boundaries to pivot between left or right component
+# TODO
+
+
+
+
+#########################################################################
+
+
+# Approach II: Find shift index (where the origin has shifted to) and do binary search on both parts of the array - [start : shift_index] & [shift_index : end]
+# Complexity: O(N) - becuase findShiftIndex is O(N)
+# doesn't help. O(N) search is as good as linear
+
+
+#########################################################################
+
+# Approach I: Find shift index (where the origin has shifted to) and keep doing binary search
+# Complexity: O(N) - becuase findShiftIndex is O(N). Doesn't help. What's the point of doing all this? Just do linear search if you're going to take O(N) time
+
 # Important learnings / observations:
 # 1. mid can directly be calculated if you know start_index & length. You don't really need to know the end (eases calculation in current problem)
 # 2. length always changes to length / 2
@@ -37,7 +56,9 @@ def findShiftIndex(array):
     current = array[idx]
   return 0
 
-  #########################################################################
+
+
+################################# OLD: ########################################
 
 
 # print(shiftedBinarySearch([46, 61, 71, 72, 73, 0, 1, 21, 33, 46], 33))  # 8
