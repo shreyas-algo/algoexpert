@@ -1,35 +1,52 @@
-# Implement min, max, peek, push & pop as O(1) time & O(1) space functions
-
 import sys
 
 # Feel free to add new properties and methods to the class.
 class MinMaxStack:
-	min = -sys.maxsize - 1
-	max = sys.maxsize
+	# init values
 	length = 0
 	stack = []
+	minDict = {}
+	maxDict = {}
     def peek(self):
-        return self.stack[-1]
+		if self.length > 0:
+        	return self.stack[-1]
+		return None
 
     def pop(self):
-		# update length
-		self.length = self.length - 1 if self.length > 0 else 0
-		# update min & max
-		# ?
-        return self.stack.pop()
+		top = self.peek()
+		print(self.stack, top)
+		if top != None:
+			# update min & max
+			# ?
+			self.length = self.length - 1
+        	return self.stack.pop()
+		return None
 
     def push(self, number):
+		top = self.peek()
+		# init
+		self.minDict[number] = number
+		self.maxDict[number] = number
+		if top != None:
+			# update min & max if applicable
+			existingMin = self.minDict[top]
+			existingMax = self.maxDict[top]
+			if number > existingMin:
+				self.minDict[number] = existingMin
+			if number < existingMax:
+				self.maxDict[number] = existingMax
+        self.stack.append(number)
 		self.length += 1
-		# update min & max if applicable
-		self.min = min(self.min, number)
-		self.max = min(self.max, number)
-        self.stack.push(number)
-        pass
+        return
 
     def getMin(self):
-		min = self.min if self.length > 0 else None
-        return min
+		top = self.peek()
+		if top != None:
+			return self.minDict[top]
+        return None
 
     def getMax(self):
-		max = self.max if self.length > 0 else None
-        return max
+		top = self.peek()
+		if top != None:
+			return self.maxDict[top]
+        return None
