@@ -38,6 +38,56 @@ def getKeyForWord(word):
 	for k in sorted(key_dict.keys()):
 		key.append(k + str(key_dict[k]))
 	return "".join(key)
+
+#########################################################################
+
+# Approach II: Idea: sort characters in every word. Then sort the list itself to group anagrams but create either a auxillary array or object out of the word list to retain the original word. Discussed in algoexpert
+# Not as optimized and unnecessarily complicated
+# Important Learning: If you create a static class variable, it will be shared by all objects of solution so always reinstantiate it accordingly (Line 63)
+class WordObject:    
+  # class variable to store all word objects
+  words = [] 
+
+  # default constructor - added for completeness. Not required until you want to initialize some instance parameter as default constructor is inherently defined for you. Comment this and test. it will work
+  def __init__(self):
+    # instance variables
+    self.value = ""
+    self.index = 0
+
+  # can be outside the class - think
+  def create_objects_from_list(self, arr_list):
+    for index,value in enumerate(arr_list):
+      # deafault constructor usage
+      obj = WordObject()
+      # important: beacause we want to use class variable and when the solution will be called for different test cases, the same class variable will keep getting used. So always reinstantiate it to [] on every call
+      obj.words = []
+      obj.value = value
+      obj.index = index
+      self.words.append(obj)
+    return self.words
+
+def groupAnagrams(words):
+    sorted_chars = list(map(lambda word: ''.join(sorted(word)), words))
+    obj = WordObject()
+    word_list = obj.create_objects_from_list(sorted_chars)
+    word_list.sort(key=lambda x: x.value)
+
+    current = ""
+    idx = -1
+    result = []
+    for obj in word_list:
+      print(obj.index, obj.value, type(obj))
+      if obj.value != current:
+        idx += 1
+        current = obj.value
+        result.append([words[obj.index]])
+      else:
+        result[idx].append(words[obj.index])
+
+    return result
+
+groupAnagrams(["race", "blink", "oy", "yo", "linkb", "care"])
+
 		
 				
 			
