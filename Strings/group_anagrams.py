@@ -67,14 +67,18 @@ class WordObject:
     return self.words
 
 def groupAnagrams(words):
+    # sort characters of all words individually
     sorted_chars = list(map(lambda word: ''.join(sorted(word)), words))
     obj = WordObject()
+    # create a list of objects
     word_list = obj.create_objects_from_list(sorted_chars)
+    # sort objects based on string 
     word_list.sort(key=lambda x: x.value)
 
     current = ""
     idx = -1
     result = []
+    # iterate through the word object list and group based on whenever the value matches and grab the original word from "words" list by using the index
     for obj in word_list:
       print(obj.index, obj.value, type(obj))
       if obj.value != current:
@@ -87,6 +91,17 @@ def groupAnagrams(words):
     return result
 
 groupAnagrams(["race", "blink", "oy", "yo", "linkb", "care"])
+
+#########################################################################
+
+# Approach III: Similar to II: You can use a separate auxillary array for storing assocaited indices
+words = ["race", "blink", "oy", "yo", "linkb", "care"]
+sorted_words = list(map(lambda word: ''.join(sorted(word)), words))   # ['acer', 'bikln', 'oy', 'oy', 'bikln', 'acer']
+# sorted_words = ["".join(sorted(w)) for w in words]        # another way of creating list after sorting characters of every string
+indices = [i for i in range(len(words))]
+indices.sort(key=lambda x: sorted_words[x])
+indices
+# [0, 5, 1, 4, 2, 3]    # which represents the indices of words if they were sorted in sorted_words - leading to grouping of anagrams
 
 		
 				
