@@ -1,0 +1,92 @@
+# This is an input class. Do not edit.
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.prev = None
+        self.next = None
+
+
+# Draw and code every case. Be careful about 3 cases: at head, at tail, in middle. Be careful when assigning pointers
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def setHead(self, node):
+    	self.head = node
+		node.prev = None
+
+    def setTail(self, node):
+        self.tail = node
+        node.next = None
+
+    def insertBefore(self, node, nodeToInsert):
+       	current = self.head
+    	while current != None:
+			if current == node:
+				# insert in front
+				if self.head == node:
+					self.setHead(nodeToInsert)
+					nodeToInsert.next = node
+				# insert in middle
+				else:
+					node.prev.next = nodeToInsert
+					nodeToInsert.next = node
+					nodeToInsert.prev = node.prev
+					node.prev = nodeToInsert
+				# break after insert done
+				break
+			current = current.next
+
+    def insertAfter(self, node, nodeToInsert):
+        current = self.head
+    	while current != None:
+			if current == node:
+				# insert in end
+				if current.next == None:
+					current.next = nodeToInsert
+					nodeToInsert.prev = current
+					self.setTail(nodeToInsert)
+			current = current.next
+        pass
+
+    def insertAtPosition(self, position, nodeToInsert):
+        # Write your code here.
+        pass
+	
+	def removalHelper(self, method_type, target):
+		node = self.head
+    	while node != None:
+			source = node
+			if method_type == "byValue":
+				source = node.value
+			if source == target:
+				# removing head
+				if node.prev == None:
+					if node.next != None:
+						self.setHead(node.next)
+					else:
+						self.head = None
+						self.tail = None
+				else:
+					node.prev.next = node.next
+					if node.next != None:
+						node.next.prev = node.prev
+					else:
+						# removing tail
+						self.setTail(node.prev)
+			node = node.next	
+	
+    def removeNodesWithValue(self, value):
+        self.removalHelper("byValue", value)
+
+    def remove(self, node):
+        self.removalHelper("byObject", node)
+
+    def containsNodeWithValue(self, value):
+		node = self.head
+    	while node != None:
+			if node.value == value:
+				return True
+			node = node.next
+		return False
