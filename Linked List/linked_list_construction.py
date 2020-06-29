@@ -47,12 +47,23 @@ class DoublyLinkedList:
 					current.next = nodeToInsert
 					nodeToInsert.prev = current
 					self.setTail(nodeToInsert)
+				else:
+					self.insertBefore(current.next, nodeToInsert)
+				# break after insert done
+				break
 			current = current.next
         pass
 
+	# question: Can you insert in end? i.e at position n+1 where n is the length of linked list
     def insertAtPosition(self, position, nodeToInsert):
-        # Write your code here.
-        pass
+        current = self.head
+		current_position = 1
+    	while current != None:
+			if current_position == position:
+				self.insertBefore(current, nodeToInsert):
+				break
+			current = current.next
+			current_position += 1
 	
 	def removalHelper(self, method_type, target):
 		node = self.head
