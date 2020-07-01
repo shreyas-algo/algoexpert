@@ -5,7 +5,8 @@ class Node:
         self.prev = None
         self.next = None
 
-
+# TODO: Remove node doesn't need loop
+# TODO: Insert Before & Insert After also do not need loop
 # Draw and code every case. Be careful about 3 cases: at head, at tail, in middle. Be careful when assigning pointers
 class DoublyLinkedList:
     def __init__(self):
@@ -21,8 +22,8 @@ class DoublyLinkedList:
         node.next = None
 
     def insertBefore(self, node, nodeToInsert):
-       	current = self.head
-    	while current != None:
+		current = self.head
+		while current != None:
 			if current == node:
 				# insert in front
 				if self.head == node:
@@ -54,16 +55,17 @@ class DoublyLinkedList:
 			current = current.next
         pass
 
-	# question: Can you insert in end? i.e at position n+1 where n is the length of linked list
+	# Can you insert in end? YES i.e at position n+1 where n is the length of linked list
     def insertAtPosition(self, position, nodeToInsert):
         current = self.head
 		current_position = 1
     	while current != None:
 			if current_position == position:
-				self.insertBefore(current, nodeToInsert):
+				self.insertBefore(current, nodeToInsert)
 				break
 			current = current.next
 			current_position += 1
+		# TODO: handle appending at end case
 	
 	def removalHelper(self, method_type, target):
 		node = self.head
@@ -92,6 +94,7 @@ class DoublyLinkedList:
         self.removalHelper("byValue", value)
 
     def remove(self, node):
+		# TODO: this does not need object comparison. The node to be removed itself is given
         self.removalHelper("byObject", node)
 
     def containsNodeWithValue(self, value):
