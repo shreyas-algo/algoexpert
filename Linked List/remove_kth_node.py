@@ -21,14 +21,14 @@ def removeKthNodeFromEnd(head, k):
 	if head == nodeToRemove:
 		# Issue: Updating local parameter here doesn't change the actual LinkedList's head (variable scoping. local var changes are not reflected outside functions). For that you need reference to the LinkedList. Though this technique to update head is great and logically makes sense. There doesn't seem to be a way to update the linked list head unless a reference is passed.
 		# head = nodeToRemove.next
-		print(nodeToRemove.next.value)  # 1
+		print(nodeToRemove.next.value)  # 1 when linked list : 0 -> 1 -> 2 -> 3 ... -> 9 and k = 10 ie trying to remove head(0)
 		head.value = nodeToRemove.next.value
 		head.next = nodeToRemove.next.next
 		print(nodeToRemove.next.value)  # 2 What? nodeToRemove.next changed as we changed head.next! Interesting
 		return                          # Due to the issue seen in print statements, this return is important. It shouldn't be. Some pointer / Algoexpert issue
 	else:
 		prev.next = nodeToRemove.next
-	print(nodeToRemove.next.value)      # Prints 2 instead of 1 if return not used for the head removal case. Strange!
+	# print(nodeToRemove.next.value)     # Prints 2 instead of 1 if return not used for the head removal case. Strange!
 	nodeToRemove.next = None
     return
 
