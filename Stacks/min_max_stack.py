@@ -15,20 +15,20 @@ class MinMaxStack:
 	stack = []
 	minDict = {}
 	maxDict = {}
-    def peek(self):
+	def peek(self):
 		if self.length > 0:
-        	return self.stack[-1]
+			return self.stack[-1]
 		return None
 
-    def pop(self):
+	def pop(self):
 		top = self.peek()
 		print(self.stack, top)
 		if top != None:
 			self.length = self.length - 1
-        	return self.stack.pop()
+			return self.stack.pop()
 		return None
 
-    def push(self, number):
+	def push(self, number):
 		top = self.peek()
 		# init
 		self.minDict[number] = number
@@ -41,18 +41,18 @@ class MinMaxStack:
 				self.minDict[number] = existingMin
 			if number < existingMax:
 				self.maxDict[number] = existingMax
-        self.stack.append(number)
+		self.stack.append(number)
 		self.length += 1
-        return
+		return
 
-    def getMin(self):
+	def getMin(self):
 		top = self.peek()
 		if top != None:
 			return self.minDict[top]
-        return None
+		return None
 
-    def getMax(self):
+	def getMax(self):
 		top = self.peek()
 		if top != None:
 			return self.maxDict[top]
-        return None
+		return None
