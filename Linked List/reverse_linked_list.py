@@ -1,14 +1,13 @@
+# Approach: Simple approach to keep the next pointer safe in a temp variable (link) so that you can access it to keep traversing and chenge current node's "next" at the same time so that the linked list can be reversed
+# Analysis: O(N)
 def reverseLinkedList(head):
     curr = head
     prev = None
-    link = curr
-    while link is not None:
-        print(link.value)
-        link = link.next
+    while curr is not None:
+        link = curr.next
         curr.next = prev
         prev = curr
         curr = link
-    print("as",prev.next.value)
     head = prev
-    head.value = prev.value
-    head.next = prev.next
+    return head
+
