@@ -15,12 +15,12 @@ class LinkedList:
 
 
 def removeKthNodeFromEnd(head, k):
-    length = lengthOf(head)
+	length = lengthOf(head)
 	prev, nodeToRemove = findKthNode(head, length, k)
 	# removing head
 	if head == nodeToRemove:
 		# Issue: Updating local parameter here doesn't change the actual LinkedList's head (variable scoping. local var changes are not reflected outside functions). For that you need reference to the LinkedList. Though this technique to update head is great and logically makes sense. There doesn't seem to be a way to update the linked list head unless a reference is passed.
-		# head = nodeToRemove.next
+		# head = nodeToRemove.next		
 		print(nodeToRemove.next.value)  # 1 when linked list : 0 -> 1 -> 2 -> 3 ... -> 9 and k = 10 ie trying to remove head(0)
 		head.value = nodeToRemove.next.value
 		head.next = nodeToRemove.next.next
@@ -30,7 +30,7 @@ def removeKthNodeFromEnd(head, k):
 		prev.next = nodeToRemove.next
 	# print(nodeToRemove.next.value)     # Prints 2 instead of 1 if return not used for the head removal case. Strange!
 	nodeToRemove.next = None
-    return
+	return
 
 def lengthOf(node):
 	len = 0
