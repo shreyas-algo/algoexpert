@@ -4,7 +4,7 @@
 
 # Analysis: O(N) time & O(1) space
 
-# Note: This question is hard because of the constant space constraint. 
+# Note: This question is hard because of the constant space constraint. If there was no space constraint, it would be as simple as a single pass with passed doctionary
 
 # Learning: #Important: Ask for hints if you're stuck. There's no point wasting time if you're getting nowhere. Be smart. Notice that the single hint of single & double pointer made you solve this question (both paper solving & code) in under 30mins! You still have a lot of places where you can showcase your skills. You dont "need to" know "how" behind the idea that the single pointer & double pointer pace will merge (from a coding interview perspective) into this sort of a solution. The "what" is good enough
 
