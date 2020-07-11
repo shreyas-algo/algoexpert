@@ -21,7 +21,7 @@ def findLoop(head):
     return node
 
 def findDoubleIntersection(head):
-    # no point in starting from start. only complicates solution
+    # no point in starting from start. only complicates solution. start both from one-jump position
     single = head.next
     # put in None check for head.next (edge case) -- talk to interviewer
     double = head.next.next
