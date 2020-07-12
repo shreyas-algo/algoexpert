@@ -1,7 +1,18 @@
 # Approach: Iterative
 # Analysis: O(N) time & O(1) space
 
-
+def getNthFib(n):
+    first = 0
+    second = 1
+    if n == 1: return first
+    if n == 2: return second
+    count = 2
+    while count != n:
+        fib = first + second
+        first = second
+        second = fib
+        count += 1
+    return fib
 
 
 # Approach II: Memoize (store) result everytime you calculate a value and use the value when another call for same value made
