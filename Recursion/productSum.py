@@ -1,30 +1,21 @@
-# Tip: You can use the type(element) function to check whether an item
-# is a list or an integer.
-# mul = 1
-# sum = 0
-# def productSum(array):
-# 	return findSum(array, 0, 1)
 
-		
-# def findSum(array, sum, mul):
-# 	if array:
-# 		item = array.pop(0)
-# 		if type(item) == int:
-# 			sum += item
-# 			productSum(array)
-# 		mul += 1
-# 		return sum + findSum(item, sum, mul)
-# 	return sum 
-
+# Learning:
+# IMPORTANT:
+# 0. For recursion: Always think 2 things:
+# a) Base case - from where answer will be returned
+# b) Reurrence relation - how do you use the same function for a smaller input / repeating pattern
+# 1. SMART: Simplified problem to only returning sum of all elements of the array. which basically ensures that recursion is calling all elements properly. Then add "multiplier" related code. Solving a subset of the problem not only gives you a better idea of what's happening but it also adds loads of confidence
+# [low] 2. Use if - else properly for complicated questions. (Dont be lazy. Write proper if-else) Do not use iterative assumption of - if there's a return in if, no need to wrtie else, simply write code
 
 def productSum(array, sum=0, mul=1):
-    if not array or type(array) == int:
+	if not array:
 		return sum
-	# print(array)
 	item = array.pop(0)
 	if type(item) == int:
-		print(item, mul, item * mul, sum)
-		sum += item * mul
+		sum += item
+		print(sum, array)
 		return productSum(array, sum, mul)
-	sum = productSum(item, sum, mul+1)
-	return productSum(array, sum, mul)
+	else:
+		sum = productSum(item, sum, mul)
+		return productSum(array, sum, mul)
+	
