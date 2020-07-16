@@ -12,10 +12,11 @@ def productSum(array, sum=0, mul=1):
 		return sum
 	item = array.pop(0)
 	if type(item) == int:
-		sum += item
-		print(sum, array)
+		sum += item * mul
+		print(item, mul, item*mul, sum, array)
 		return productSum(array, sum, mul)
 	else:
-		sum = productSum(item, sum, mul)
+		sum = productSum(item, sum, mul+1)
 		return productSum(array, sum, mul)
+	
 	
