@@ -16,7 +16,8 @@ def productSum(array, sum=0, mul=1):
 		print(item, mul, item*mul, sum, array)
 		return productSum(array, sum, mul)
 	else:
-		sum = productSum(item, sum, mul+1)
+		sum = productSum(item, sum, mul*(mul+1))
 		return productSum(array, sum, mul)
+	
 	
 	
