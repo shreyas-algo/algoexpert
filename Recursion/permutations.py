@@ -31,8 +31,8 @@ def getPermutations(array, count = 0, dict = {}, result = []):
     else:
       remaining = getPermutations(list(remainingSet), count, dict, result)
       print(">>>>>",remainingSet, ":", remaining)
-      dict[remainingSet] = tuple(remaining)
-      print("***", dict[remainingSet])
+      dict[remainingSet] = remaining.copy()
+      print("***", integer, dict[remainingSet])
       # append current integer in all results
     # print("::",integer, remaining)
     # count = 0
