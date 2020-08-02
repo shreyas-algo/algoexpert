@@ -25,24 +25,27 @@ def getPermutations(array, count = 0, dict = {}, result = []):
     # get all permutations except current integer
     remainingSet = frozenset(set(array) - set([integer]))
     if remainingSet in dict:
+      # print(dict)
       print("Existing: ",remainingSet, "::",dict[remainingSet])
-      remaining = dict[remainingSet]
+      remaining = list(dict[remainingSet])
     else:
       remaining = getPermutations(list(remainingSet), count, dict, result)
-      dict[remainingSet] = remaining
+      print(">>>>>",remainingSet, ":", remaining)
+      dict[remainingSet] = tuple(remaining)
+      print("***", dict[remainingSet])
       # append current integer in all results
-    print("::",integer, remaining)
-    count = 0
+    # print("::",integer, remaining)
+    # count = 0
     for rem in remaining:
       rem.append(integer)
       # result.append(rem)
       # print(remaining)
-      count += 1
-      if count == 20:
-        break
+      # count += 1
+      # if count == 20:
+      #   break
       # print(integer, rem)
       # return remaining
-    print("rem: ",remaining)
+    # print("rem: ",remaining)
     result.extend(remaining)
   return result
 
