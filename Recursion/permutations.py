@@ -30,18 +30,19 @@ def getPermutations(array, dict = {}):
     # get all permutations except current integer
     remainingSet = frozenset(set(array) - set([integer]))
     if remainingSet in dict:
-      # print("ex")
+      print("existing:", remainingSet, dict[remainingSet])
       remaining = dict[remainingSet]
     else:
       remaining = getPermutations(list(remainingSet), dict)
       dict[remainingSet] = remaining
     # append current integer in all results
-    remaining_list = []
     for rem in remaining:
-      rem_list = list(rem)
-      rem_list.append(integer)
-      remaining_list.append(rem_list)
-    result.extend(remaining_list)
+      # IMP: create a copy of rem & remaining or else the dictionary will change
+      rem_copy = list(rem)
+      # .copy() is another way to create copy
+      # rem_list = rem.copy()
+      rem_copy.append(integer)
+      result.append(rem_copy)
   # print(array, result)
   # print(dict)
   return result
