@@ -16,13 +16,14 @@
 # use tuples for non-mutation
 
 def getPermutations(array, count = 0, dict = {}, result = []):
+  result = []
   if len(array) == 2:
     return ((array[0], array[1]), (array[1], array[0]))
   for integer in array:
     # get all permutations except current integer
     remainingSet = frozenset(set(array) - set([integer]))
     if tuple(remainingSet) in dict:
-      # print("Existing: ",remainingSet, "::",dict[tuple(remainingSet)])
+      print("Existing: ",remainingSet, "::",dict[tuple(remainingSet)])
       remaining = dict[tuple(remainingSet)]
     else:
       remaining = getPermutations(list(remainingSet), count, dict, result)
@@ -39,6 +40,7 @@ def getPermutations(array, count = 0, dict = {}, result = []):
       # print(integer, rem)
     result.extend(tuple(remaining_list))
   print(array, result)
+  # print(dict)
   return tuple(result)
 
 print(getPermutations([1,2,3,4]))
