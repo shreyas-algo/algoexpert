@@ -7,28 +7,35 @@
 # Talk with your interviewer. Try to get a solution ready as below (consider only unoque numbers) which will fail some cases 
 
 def getPermutations(array, count = 0, dict = {}, result = []):
-	if count == 10:
-		return result
-	count += 1
-	if len(array) == 2:
-		return [[array[0], array[1]], [array[1], array[0]]]
-    for integer in array:
-        # get all permutations except current integer
-        remainingSet = frozenset(set(array) - set([integer]))
-        if remainingSet in dict:
-        print("yes")
-                remaining = dict[remainingSet]
-        else:
-                remaining = getPermutations(list(remainingSet), count, dict, result)
-                dict[remainingSet] = remaining
-            # append current integer in all results
-        print(integer, remaining)
-        for rem in remaining:
-        rem.append(integer)
-        result.append(rem)
-        # print(integer, rem)
-        # return remaining
-    return result
+  # if count == 10:
+  # 	return result
+  # count += 1
+  if len(array) == 2:
+    return [[array[0], array[1]], [array[1], array[0]]]
+  for integer in array:
+    # get all permutations except current integer
+    remainingSet = frozenset(set(array) - set([integer]))
+    if remainingSet in dict:
+      print("Existing: ",remainingSet, "::",dict[remainingSet])
+      remaining = dict[remainingSet]
+    else:
+      remaining = getPermutations(list(remainingSet), count, dict, result)
+      dict[remainingSet] = remaining
+      # append current integer in all results
+    print("::",integer, remaining)
+    count = 0
+    for rem in remaining:
+      rem.append(integer)
+      # result.append(rem)
+      # print(remaining)
+      count += 1
+      if count == 20:
+        break
+      # print(integer, rem)
+      # return remaining
+    print("rem: ",remaining)
+    result.extend(remaining)
+  return result
 
-getPermutations([1,2,3])
+print(getPermutations([1,2,3,4]))
 
