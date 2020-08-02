@@ -14,7 +14,6 @@
 # lists cannot be hashed as keys in dictionary. Use tuples
 
 #TODO:
-# 1. Note issue with array of array iteration when appending inner array (except for list in dict issue)
 # 2. why result had to be init for every call
 
 # Note: frozenset can be used because an array of unique integers given. (or else frozenset() will obliterate non-unique numbers)
@@ -24,13 +23,16 @@
 
 def getPermutations(array, dict = {}):
   result = []
+  # for edge case [1]
+  if len(array) == 1:
+    return [[array[0]]]
   if len(array) == 2:
     return [[array[0], array[1]], [array[1], array[0]]]
   for integer in array:
     # get all permutations except current integer
     remainingSet = frozenset(set(array) - set([integer]))
     if remainingSet in dict:
-      print("existing:", remainingSet, dict[remainingSet])
+      # print("existing:", remainingSet, dict[remainingSet])
       remaining = dict[remainingSet]
     else:
       remaining = getPermutations(list(remainingSet), dict)
