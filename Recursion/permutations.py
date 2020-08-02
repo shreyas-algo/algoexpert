@@ -6,6 +6,15 @@
 # IMP: Notice that frozenset used for two things: a) to create key of dictionary (tuple can be used instead) b) to obtain set difference (will need new logic)
 # Talk with your interviewer. Try to get a solution ready as below (consider only unoque numbers) which will fail some cases 
 
+# IMP Learning:
+# if you mutate an array stored in a dictionary after storing it, the value stored in doctionary also changes!
+# d = {}
+# arr = [3, 5, 6] 
+# d[1] = arr
+# arr.append(7)
+# d[1] # [3,5,6,7] even though you did not change the dictionary value, the reference is the same!
+# use tuples for non-mutation
+
 def getPermutations(array, count = 0, dict = {}, result = []):
   # if count == 10:
   # 	return result
