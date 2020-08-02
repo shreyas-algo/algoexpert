@@ -20,24 +20,29 @@ def getPermutations(array, count = 0, dict = {}, result = []):
   # 	return result
   # count += 1
   if len(array) == 2:
-    return [[array[0], array[1]], [array[1], array[0]]]
+    return ((array[0], array[1]), (array[1], array[0]))
   for integer in array:
     # get all permutations except current integer
     remainingSet = frozenset(set(array) - set([integer]))
-    if remainingSet in dict:
-      # print(dict)
-      print("Existing: ",remainingSet, "::",dict[remainingSet])
-      remaining = list(dict[remainingSet])
+    if tuple(remainingSet) in dict:
+      # print("@@",dict) 
+      print("Existing: ",remainingSet, "::",dict[tuple(remainingSet)])
+      remaining = list(dict[tuple(remainingSet)])
     else:
       remaining = getPermutations(list(remainingSet), count, dict, result)
-      print(">>>>>",remainingSet, ":", remaining)
-      dict[remainingSet] = remaining.copy()
-      print("***", integer, dict[remainingSet])
+      print(">>>>> Setting ",remainingSet, ":", remaining)
+      dict[tuple(remainingSet)] = tuple(remaining)
+      # print("@@",dict) 
+      # print("***", integer, dict[tuple(remainingSet)])
       # append current integer in all results
     # print("::",integer, remaining)
     # count = 0
+    remaining_list = []
+    print("NNN", remaining)
     for rem in remaining:
-      rem.append(integer)
+      rem_list = list(rem)
+      rem_list.append(integer)
+      remaining_list.append(rem_list)
       # result.append(rem)
       # print(remaining)
       # count += 1
@@ -46,7 +51,7 @@ def getPermutations(array, count = 0, dict = {}, result = []):
       # print(integer, rem)
       # return remaining
     # print("rem: ",remaining)
-    result.extend(remaining)
+    result.extend(remaining_list)
   return result
 
 print(getPermutations([1,2,3,4]))
