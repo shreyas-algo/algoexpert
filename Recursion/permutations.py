@@ -36,12 +36,12 @@ def getPermutations(array, count = 0, dict = {}, result = []):
     for rem in remaining:
       rem_list = list(rem)
       rem_list.append(integer)
-      remaining_list.append(tuple(rem_list))
+      remaining_list.append(rem_list)
       # print(integer, rem)
-    result.extend(tuple(remaining_list))
+    result.extend(remaining_list)
   print(array, result)
   # print(dict)
-  return tuple(result)
+  return result
 
 print(getPermutations([1,2,3,4]))
 
