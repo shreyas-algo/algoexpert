@@ -8,10 +8,14 @@
 # d[1] = arr
 # arr.append(7)
 # d[1] # [3,5,6,7] even though you did not change the dictionary value, the reference is the same!
-# use tuples for non-mutation
+# ***BIG: use tuples to store lists in dictioanry for non-mutation
 
 # IMP Learning 2:
 # lists cannot be hashed as keys in dictionary. Use tuples
+
+#TODO:
+# 1. Note issue with array of array iteration when appending inner array (except for list in dict issue)
+# 2. why result had to be init for every call
 
 # Note: frozenset can be used because an array of unique integers given. (or else frozenset() will obliterate non-unique numbers)
 # Try thinking how you'll solve it of it was non-unique integers
