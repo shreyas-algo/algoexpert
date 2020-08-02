@@ -25,15 +25,16 @@
 def getPermutations(array, dict = {}):
   result = []
   if len(array) == 2:
-    return ((array[0], array[1]), (array[1], array[0]))
+    return [[array[0], array[1]], [array[1], array[0]]]
   for integer in array:
     # get all permutations except current integer
     remainingSet = frozenset(set(array) - set([integer]))
-    if tuple(remainingSet) in dict:
-      remaining = dict[tuple(remainingSet)]
+    if remainingSet in dict:
+      # print("ex")
+      remaining = dict[remainingSet]
     else:
       remaining = getPermutations(list(remainingSet), dict)
-      dict[tuple(remainingSet)] = tuple(remaining)
+      dict[remainingSet] = remaining
     # append current integer in all results
     remaining_list = []
     for rem in remaining:
@@ -42,6 +43,7 @@ def getPermutations(array, dict = {}):
       remaining_list.append(rem_list)
     result.extend(remaining_list)
   # print(array, result)
+  # print(dict)
   return result
 
 print(getPermutations([1,2,3,4]))
