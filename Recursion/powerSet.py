@@ -1,6 +1,11 @@
 # Approach: for every element in array, add element and recursively call the power_set function for the remaining set (excluding the integer)
 # TODO: Optimization: Use key creation and storing instead of using tuples as keys for list. As list -> tuple is a O(N) operation
 
+# Status: Working for all cases when individually populated but not for "all tests". Read the FAQ regarding this which said do not use global var and thus chnanged code. Still facing issue. Contacted AlgoExpert
+
+# IMP Learning :
+# Do not use Gloabl variables. Use local vars inside a function. If you need something to persist across function calls, use instantiated local params like used here `func(var=1)` (this means if var is passed it will take the value whatever is passed. if not, it will be initialized by 1)
+
 # result: list holding result
 # power_set: set holding passed values
 # TODO: consider doing with a single set
