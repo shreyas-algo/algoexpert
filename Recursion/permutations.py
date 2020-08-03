@@ -1,4 +1,4 @@
-# Approach: Iterate through the array and for every element, append the element in the permutations of {array - element}. Thus `perm(contains: n) = perm(without n) + n` thus it is recursive definition with base case being only 2 elements when the result is {a, b} & {b ,a}
+# Approach: Iterate through the array and for every element, append the element in the permutations of {array - element} to get permutations. Thus `perm(contains: n) = perm(without n) + n` thus it is recursive definition with base case being only 2 elements when the result is {a, b} & {b ,a}
 # Optimize: Memoize results: use tuple(list)
 
 # TODO: Do preformance analysis 
