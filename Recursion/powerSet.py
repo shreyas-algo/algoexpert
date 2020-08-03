@@ -1,6 +1,8 @@
 # Approach: for every element in array, add element and recursively call the power_set function for the remaining set (excluding the integer)
 # TODO: Optimization: Use key creation and storing instead of using tuples as keys for list. As list -> tuple is a O(N) operation
+# TODO: Do preformance analysis 
 
+# TODO: Understand and implement AlgoExpert's solution also
 # Status: Working for all cases when individually populated but not for "all tests". Read the FAQ regarding this which said do not use global var and thus chnanged code. Still facing issue. Contacted AlgoExpert
 
 # IMP Learning :
