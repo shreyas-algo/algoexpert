@@ -1,5 +1,6 @@
 # Approach: Iterate through the array and for every element, append the element in the permutations of {array - element} to get permutations. Thus `perm(contains: n) = perm(without n) + n` thus it is recursive definition with base case being only 2 elements when the result is {a, b} & {b ,a}
-# Optimize: Memoize results: use tuple(list)
+# [DONE] Optimize: Memoize results: use tuple(list)
+# TODO: Further Optimization: Use key creation and storing instead of using tuples as keys for list. As list -> tuple is a O(N) operation
 
 # TODO: Do preformance analysis 
 
