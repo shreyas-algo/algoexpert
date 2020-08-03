@@ -1,6 +1,8 @@
 # Approach: Iterate through the array and for every element, append the element in the permutations of {array - element}. Thus `perm(contains: n) = perm(without n) + n` thus it is recursive definition with base case being only 2 elements when the result is {a, b} & {b ,a}
 # Optimize: Memoize results: use tuple(list)
 
+# TODO: Do preformance analysis 
+
 # IMP Learning 1:
 # if you mutate an array stored in a dictionary after storing it, the value stored in doctionary also changes!
 # d = {}
