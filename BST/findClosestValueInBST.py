@@ -1,4 +1,4 @@
-# Approach: Go through the tree in find_in_BST fashion but also keep track of closest value & mindiff as you're going through. Keep updating closest on every call. Finally return closest
+# Approach I: Go through the tree in find_in_BST fashion but also keep track of closest value & mindiff as you're going through. Keep updating closest on every call. Finally return closest
 # Analysis: O(log N)
 
 # TODO: Watch Algoexpert solution
@@ -8,6 +8,8 @@
 # So always return result from your child call and use it in the parent call to return answer
 # IMP: See lines 19 & 21 where you're updating `closest` value based on what the child branch returns. 
     # That is crucial. If you do not do that, the child will update closest but the closest value will not propogate up to the parent call and the parent call will return a stale closest
+
+# Approach II: Notice that the closest number to a node will be the smallest number in its right subtree or largest element in its left subtree (draw and check)
 
 def findClosestValueInBst(tree, target, minDiff=1000000, closest=None):
     if tree.value == target:
