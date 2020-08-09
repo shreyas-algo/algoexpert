@@ -42,20 +42,60 @@ class BST:
 					parent.left = None
 				else:
 					parent.right = None
+			
 			# removing non-leaf node
 			# TODO: check root removal case
 			if self.left is not None:
-				closest = self.left.findClosestValueInBst(self.value)
+				coming_from = "left"
+				closest, closest_parent  = self.left.findClosestValueInBst(self.value)
 			if self.right is not None:
-				closest = self.right.findClosestValueInBst(self.value)
+				closest, closest_parent = self.right.findClosestValueInBst(self.value)
 			
+			# DRAW cases and observe:
 			# closest will definitely have value because neither left nor right child case (leaf node) covered above
 			# Issues to consider:
 			# a) the `closest` node value (or the new root) to the target (that is being removed) may have a child linked which will need to be relinked to the new root. 
 			# a) Also, Notice that if closest is retrieved from right sub-tree, it can at max have a right subtree cz a left subtree will mean that it is not the smallest element which contradicts it being the closest to the target element. Similarly a closest from left subtree can have at max left subtrees and cannot have further right subtrees (draw and check)
+			# a) Also, a closest coming from left can never be to the left of its parent because that will contradict it being the largest in the left subtree unless it's the first child itself (which is a case being hendled: where closest_parent == self). Similarly a closest coming from ritgh can never be to right of its parent unless it is the first right child pf target (again case being hedled by closest_parent == self)
 			# b) Also, if the closest is immediate right or immediate left to the target, you don't need to do the relinking cz closest's parent = target (node to be removed), so no relinking required
 			
+			# Think?: you don't need delinking of closest logic. Simply call remove() to delink it -- problem might be that our remove method works on value. 
+			# relink closest's sub-trees if they exist and when closest's parent is not same as the target to be removed
+			if closest_parent != self:
+				# coming from left and has a right sub tree which needs relinking
+				if coming_from == "left" and closest.left is not None:
+					closest_parent.right = closest.left
+				# coming from right and has a right sub tree which needs relinking
+				elif closest.right is not None:
+					closest_parent.left = closest.right
 			
+			# link closest to target's parent
+			if parent is not None:
+				if direction == "left":
+					parent.left = closest
+				else:
+					parent.right = closest
+			
+			
+			# link target's left and right to closest
+			if closest_parent != self:
+				# condition put for cases when immediate left or right is the closest. Draw and check
+				if closest.right != self.right:
+					closest.right = self.right
+				if closest.left != self.left:
+					closest.left = self.left
+			# else:
+			# 	# immediate left child was closest
+			# 	if coming_from == "left":
+			# 		closest.right = self.right
+			# 	# immediate right child was closest
+			# 	elif closest.right is not None:
+			# 		closest.left = self.left
+			
+			# delink target (self)
+			self.left = None
+			self.right = None
+			return closest
 			
 		elif value < self.value and self.left is not None:
 			self.left.remove(value, self, "left")
@@ -63,15 +103,17 @@ class BST:
 			self.right.remove(value, self, "right")
         return self
 	
-	def findClosestValueInBst(self, target, parent, minDiff=1000000, closest=None):
+	# find node which is closest to given targrt. Return alongside its parent
+	def findClosestValueInBst(self, target, parent, minDiff=1000000, closest=None, closest_parent=None):
 		if self.value == target:
-			return tree
+			return (self, parent)
 		if abs(self.value - target) < minDiff:
 			minDiff = abs(self.value - target)
 			closest = self
+			closest_parent = parent
 		if self.value < target and self.right:
-			closest = findClosestValueInBst(self.right, target, minDiff, closest)
+			closest, closest_parent = findClosestValueInBst(self.right, self, target, minDiff, closest, closest_parent)
 		elif tree.left:
-			closest = findClosestValueInBst(self.left, target, minDiff, closest)
+			closest, closest_parent = findClosestValueInBst(self.left, self, target, minDiff, closest, closest_parent)
 		# if no branch left to explore
-		return closest
+		return (closest, closest_parent)
