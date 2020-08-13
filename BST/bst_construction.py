@@ -2,6 +2,10 @@
 # the insert, contains, and remove methods.
 # Feel free to add new properties and methods
 # to the class.
+
+# Learning:
+# Always return from a recursion's parent call. eg in search add return in front of a child call for the result to propogate out (check contains() code)
+
 class BST:
     def __init__(self, value):
         self.value = value
@@ -20,14 +24,16 @@ class BST:
 			else:
 				self.right.insert(value)
         return self
-
+	
     def contains(self, value):
+		print(value, self.value)
 		if value == self.value:
+			print("Found value")
 			return True
         elif value < self.value and self.left is not None:
-			self.left.contains(value)
+			return self.left.contains(value)
 		elif value >= self.value and self.right is not None:
-			self.right.contains(value)
+			return self.right.contains(value)
         return False
 	
 	# Approach:  notice that to find the right element that replaces a given node that is being replaced (if it has children), you need to find either leftmost element in its right subtree or find rightmost element in its left subtree (to retain the BST strucuture) Draw example and see
