@@ -1,4 +1,4 @@
-# Note: Acyclic Graph given in Question or we need to keep a trakc of visited flag to avoid infinite calls
+# Note: Acyclic Graph given in Question or we need to keep a track of visited flag to avoid infinite calls
 
 # Do not edit the class below except
 # for the depthFirstSearch method.
