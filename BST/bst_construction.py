@@ -6,6 +6,9 @@
 # Learning:
 # Always return from a recursion's parent call. eg in search add return in front of a child call for the result to propogate out (check contains() code)
 
+# TODO: Complete remove
+# TODO: Implement recursively
+
 class BST:
     def __init__(self, value):
         self.value = value
