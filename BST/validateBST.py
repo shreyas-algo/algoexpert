@@ -13,3 +13,12 @@ def validateBst(tree):
 		return True
 	else:
 		return False
+
+def validBSTStructure(left, root, right):
+	if left is not None and left.value >= root.value:
+		return False
+	if right is not None and right.value < root.value:
+		return False
+	return True
+	
+	
