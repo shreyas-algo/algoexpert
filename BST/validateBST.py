@@ -9,7 +9,7 @@ class BST:
 def validateBst(tree):
     if tree is None:
 		return True
-	if validBSTStructure(tree.left, tree, tree.right) and validateBst(tree.left) and validateBst(tree.right):
+	if validBSTStructure(getMaxValue(tree.left), tree, getMinValue(tree.right)) and validateBst(tree.left) and validateBst(tree.right):
 		return True
 	else:
 		print("returning false on: ", tree.value)
@@ -21,5 +21,25 @@ def validBSTStructure(left, root, right):
 	if right is not None and right.value < root.value:
 		return False
 	return True
+
+# return right most value in a BST    
+def getMaxValue(node):
+    # if tree.left itself did not exist
+    if node is None:
+        return None
+    # keep going right until possible
+    if node.right is not None:
+        getMaxValue(node.right)
+    # if can't go right any further, return value. This will be the max
+    return node.value
+
+# return left most value in a BST    
+def getMinValue(node):
+    if node is None:
+        return None
+    # keep going left until possible
+    if node.left is not None:
+        getMinValue(node.left)
+    return node.value
 	
 	
