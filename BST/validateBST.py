@@ -6,13 +6,15 @@ class BST:
         self.right = None
 
 # Approach: check if the current structure is right and then left and right children are also validBSTs. If yes, overall it's a validBST
+# Learning: IMP: Repeating mistake:
+# Propogating return from a recursive call: Using return on a recursive call is important to make the child calls affect the parent call return. Eg it will be `return getMaxValue(node.right)` and not simply `getMaxValue(node.right)`. Think about the reason
+
 def validateBst(tree):
     if tree is None:
 		return True
 	if validBSTStructure(getMaxValue(tree.left), tree, getMinValue(tree.right)) and validateBst(tree.left) and validateBst(tree.right):
 		return True
 	else:
-		print("returning false on: ", tree.value)
 		return False
 
 def validBSTStructure(left, root, right):
@@ -29,9 +31,9 @@ def getMaxValue(node):
         return None
     # keep going right until possible
     if node.right is not None:
-        getMaxValue(node.right)
-    # if can't go right any further, return value. This will be the max
-    return node.value
+        return getMaxValue(node.right)
+    # if can't go right any further, return. This will be the max
+    return node
 
 # return left most value in a BST    
 def getMinValue(node):
@@ -39,7 +41,7 @@ def getMinValue(node):
         return None
     # keep going left until possible
     if node.left is not None:
-        getMinValue(node.left)
-    return node.value
+        return getMinValue(node.left)
+    return node
 	
 	
