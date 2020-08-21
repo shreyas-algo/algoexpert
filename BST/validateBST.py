@@ -5,9 +5,13 @@ class BST:
         self.left = None
         self.right = None
 
-# Approach: check if the current structure is right and then left and right children are also validBSTs. If yes, overall it's a validBST
+# Approach I: check if the current structure is right and then left and right children are also validBSTs. If yes, overall it's a validBST
+# O(n log n) {because you call getMinValue() for every node which is a log (n) or O(d) operation where d is depth } time & O(d) space {due to recursive call stack}
 # Learning: IMP: Repeating mistake:
 # Propogating return from a recursive call: Using return on a recursive call is important to make the child calls affect the parent call return. Eg it will be `return getMaxValue(node.right)` and not simply `getMaxValue(node.right)`. Think about the reason
+
+# TODO:
+# Approach II: Implement optimized solution of O(N) by keeping track of min-max as you go down the calls
 
 def validateBst(tree):
     if tree is None:
