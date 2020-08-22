@@ -9,6 +9,9 @@ class BinaryTree:
 # Status - Does not run succcesfully when "Run Tests" used on Algoexpert. But works when single test case is populated and checked
 # Update: Added print and compared to test cases. It looks good. Possibly the issue is how Algoexpert is calling the function
 
+# O(n) time
+# O(d) space due to recursive calls (where d is the max depth of the tree) and O(n/2) due to result array (A balanced tree can have at most n/2 leaves). If not balanced, then it's a single branch so O(1) for result but O(n) for recursive calls
+# So effectively O(n) space
 def branchSums(root, result=[], curr_sum=0):
 	if root is None:
 		return
