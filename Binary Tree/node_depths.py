@@ -2,6 +2,7 @@
 # O(n) time and O(d) space where d is max depth
 
 # TODO: Look at Algoexpert video
+# TODO: Keep iterative solution from Algoexpert
 # Learning: 
 # When an array is involved, you don't need to propogate child results eg see branch_sums.py
 # Whereas when it's a variable you need to because whatever happened in child calls, the parent is unaware of it
