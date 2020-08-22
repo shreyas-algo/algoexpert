@@ -6,8 +6,13 @@
 # Binary Search important pointers:
 # 1. init: lo = 0, hi = arr_len - 1
 # 2. Base condition: `if lo > hi: return` --> i.e run `while lo <= hi` : Notice that the two conditions are complimentary but used differently. One breaks the recursion and other continues the iteration -- crux is run until lo == hi
+# 3. mid = int((lo+hi)/2) -- int is important and lo+hi simply
 # Basically the values always run on indices. ie. len-1 as hi, NOT len 
 # And end on lo == hi (single element array)
+
+# Learning:
+# Avoid splicing array. It's an O(n) operation. Use indices to pass through functions
+# Not always possible when you need full array. But definitely possible here
 
 def minHeightBst(array):
 	# Note: Use deque for optimized popleft. Fine here as only used once
@@ -26,6 +31,7 @@ def insertionHelper(array, lo, hi, root=None):
 	insertionHelper(array, mid+1, hi, root)
 	return root
 
+# --------------------------------------------------
 # Helpers. Provided by default:
 class BST:
     def __init__(self, value):
