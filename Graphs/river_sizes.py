@@ -3,6 +3,8 @@
 
 # Learning: whenever you see issue in recursion code, always check whether you're catching return from intermeddiate recursion call. It's a common mistake you make
 # eg here the `size = markAdjacent()` part in `markAdjacent()`` internal calls. Notice that if you don't do this, the updated size value from #top will not take reflect in call made for right cz as the recursion returns to parent, the parent size will still be what was passed to it as an argument
+
+# TODO: Look st Algoexpert video and solution
 def riverSizes(matrix):
     rowlen = len(matrix)
 	collen = len(matrix[0])
