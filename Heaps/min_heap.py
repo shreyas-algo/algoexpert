@@ -2,22 +2,34 @@
 # siftDown, siftUp, peek, remove, and insert methods.
 # Feel free to add new properties and methods to the class.
 
+# Approach: Look at conceptual overview
+# TODO: Write approach down
 import math
 class MinHeap:
     def __init__(self, array):
         # Do not edit the line below.
         self.heap = self.buildHeap(array)
-		self.size = len(self.heap)
-
+	
+	# O(N) time when implemented with siftDown (not nlogn cz majority siftDown calls take less time. It's only upper levels that take logn time). Look at conceptual overview
     def buildHeap(self, array):
-        # Write your code here.
-		
 		self.size = len(array)
+		last_idx = self.size - 1
+		# get last element's parent
+		parent = math.floor((last_idx-1)/2)
+		while parent >= 0:
+			self.siftDown(array, parent)
         return self.heap
 
-    def siftDown(self):
+	# O(logN) time
+    def siftDown(self, array=[], index=None):
 		if self.size > 0:
-			current = self.size - 1
+			if index is None:
+				current = 0
+			else:
+				current = index
+				
+			if array:
+				self.heap = array
 			# default to current if left nor right child exist. In that case it will break out as valueAt[current] will not be greater than valueAt[child] hence breaking the while loop
 			# done because eventually child should be a valid index. 3cases:
 			# a. left exists right doesn't exist = child is left (assign infinity to right)
@@ -39,7 +51,8 @@ class MinHeap:
 				else:
 					break
 		return
-
+	
+	# O(logN) time
     def siftUp(self):
 		current = self.size - 1
 		parent = math.floor((current-1)/2)
@@ -52,12 +65,13 @@ class MinHeap:
 				break
 		return
 			
-
+	# O(1) time
     def peek(self):
 		if len(self.heap) > 0:
 			return self.heap[0]
 		return None
-
+	
+	# O(logN) time including balancing
     def remove(self):
         removed = None
 		if self.size > 0:
@@ -67,9 +81,11 @@ class MinHeap:
 			self.siftDown()
 			self.size -= 1
         return removed
-
+	
+	# O(logN) time including balancing
     def insert(self, value):
         self.heap.append(value)
 		self.siftUp()
 		self.size += 1
         return self.heap
+
