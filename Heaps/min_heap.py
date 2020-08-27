@@ -2,8 +2,10 @@
 # siftDown, siftUp, peek, remove, and insert methods.
 # Feel free to add new properties and methods to the class.
 
-# Approach: Look at conceptual overview
+# Approach: Look at conceptual overview. 
+# The implementation is based on two basic methods: siftUp & siftDown
 # TODO: Write approach down
+# TODO: watch code walkthrough
 import math
 import sys
 class MinHeap:
@@ -31,42 +33,17 @@ class MinHeap:
 				current = 0
 			else:
 				current = index
-			# default to current if left nor right child exist. In that case it will break out as valueAt[current] will not be greater than valueAt[child] hence breaking the while loop
-			# done because eventually child should be a valid index. 3cases:
-			# a. left exists right doesn't exist = child is left (assign infinity to right)
-			# b. right exists, left doesn't existt = not possible. complete binary tree by definition
-			# c. both right & left don't exist = default to current index. When you will check in while -- you'll break out due to equality. No need to shift down which is exactly what we want once you reach the end
-			# can also write proper if-else for this. This is just neater
-			# do you even need this? - Think? child < self.size should take care. Remove ternary from left? How do you access value then?
-			# TODO: Wrap left or right assignment in a function
-			print(current)
-			left = 2*current+1 if 2*current+1 < self.size else None
-			right = 2*current+2 if 2*current+2 < self.size else None
-			print(left, right)
-			child = None
-			if left is not None and right is not None:
-				child = left if self.heap[left] < self.heap[right] else right
-			elif left is not None:
-				child = left
-			elif right is not None:
-				child = right
+			child = self.getSmallerChild(current)
 			# child = left if self.heap[left] < self.heap[right] else right
 			while child is not None and child < self.size:
 				if self.heap[current] > self.heap[child]:
 					self.heap[current], self.heap[child] = self.heap[child], self.heap[current]
 					current = child
-					left = 2*current+1 if 2*current+1 < self.size else None
-					right = 2*current+2 if 2*current+2 < self.size else None
-					if left is not None and right is not None:
-						child = left if self.heap[left] < self.heap[right] else right
-					elif left is not None:
-						child = left
-					elif right is not None:
-						child = right
+					child = self.getSmallerChild(current)
 				else:
 					break
 		return self.heap
-	
+		
 	# O(logN) time
     def siftUp(self):
 		current = self.size - 1
@@ -103,3 +80,16 @@ class MinHeap:
 		self.size += 1
 		self.siftUp()
         return
+	
+	# helper method. O(1) time
+	def getSmallerChild(self, current):
+		left = 2*current+1 if 2*current+1 < self.size else None
+		right = 2*current+2 if 2*current+2 < self.size else None
+		child = None
+		if left is not None and right is not None:
+			child = left if self.heap[left] < self.heap[right] else right
+		elif left is not None:
+			child = left
+		elif right is not None:
+			child = right
+		return child
