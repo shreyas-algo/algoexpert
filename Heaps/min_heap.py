@@ -100,6 +100,6 @@ class MinHeap:
 	# O(logN) time including balancing
     def insert(self, value):
         self.heap.append(value)
-		self.siftUp()
 		self.size += 1
-        return self.heap
+		self.siftUp()
+        return
