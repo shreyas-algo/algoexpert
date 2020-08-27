@@ -5,6 +5,7 @@
 # Approach: Look at conceptual overview
 # TODO: Write approach down
 import math
+import sys
 class MinHeap:
     def __init__(self, array):
         # Do not edit the line below.
@@ -13,23 +14,23 @@ class MinHeap:
 	# O(N) time when implemented with siftDown (not nlogn cz majority siftDown calls take less time. It's only upper levels that take logn time). Look at conceptual overview
     def buildHeap(self, array):
 		self.size = len(array)
+		# initialize heap with given array
+		self.heap = array
 		last_idx = self.size - 1
 		# get last element's parent
 		parent = math.floor((last_idx-1)/2)
 		while parent >= 0:
-			self.siftDown(array, parent)
-        return self.heap
+			array = self.siftDown(parent)
+			parent = parent - 1
+        return array
 
 	# O(logN) time
-    def siftDown(self, array=[], index=None):
+    def siftDown(self, index=None):
 		if self.size > 0:
 			if index is None:
 				current = 0
 			else:
 				current = index
-				
-			if array:
-				self.heap = array
 			# default to current if left nor right child exist. In that case it will break out as valueAt[current] will not be greater than valueAt[child] hence breaking the while loop
 			# done because eventually child should be a valid index. 3cases:
 			# a. left exists right doesn't exist = child is left (assign infinity to right)
@@ -38,19 +39,33 @@ class MinHeap:
 			# can also write proper if-else for this. This is just neater
 			# do you even need this? - Think? child < self.size should take care. Remove ternary from left? How do you access value then?
 			# TODO: Wrap left or right assignment in a function
-			left = 2*current+1 if 2*current+1 < self.size else current
-			right = 2*current+2 if 2*current+2 < self.size else math.inf
-			child = left if self.heap[left] < self.heap[right] else right
-			while child < self.size:
+			print(current)
+			left = 2*current+1 if 2*current+1 < self.size else None
+			right = 2*current+2 if 2*current+2 < self.size else None
+			print(left, right)
+			child = None
+			if left is not None and right is not None:
+				child = left if self.heap[left] < self.heap[right] else right
+			elif left is not None:
+				child = left
+			elif right is not None:
+				child = right
+			# child = left if self.heap[left] < self.heap[right] else right
+			while child is not None and child < self.size:
 				if self.heap[current] > self.heap[child]:
 					self.heap[current], self.heap[child] = self.heap[child], self.heap[current]
 					current = child
-					left = 2*current+1 if 2*current+1 < self.size else current
-					right = 2*current+2 if 2*current+2 < self.size else math.inf
-					child = left if self.heap[left] < self.heap[right] else right
+					left = 2*current+1 if 2*current+1 < self.size else None
+					right = 2*current+2 if 2*current+2 < self.size else None
+					if left is not None and right is not None:
+						child = left if self.heap[left] < self.heap[right] else right
+					elif left is not None:
+						child = left
+					elif right is not None:
+						child = right
 				else:
 					break
-		return
+		return self.heap
 	
 	# O(logN) time
     def siftUp(self):
@@ -88,4 +103,3 @@ class MinHeap:
 		self.siftUp()
 		self.size += 1
         return self.heap
-
