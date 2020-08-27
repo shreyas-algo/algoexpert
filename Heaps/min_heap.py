@@ -13,7 +13,7 @@ class MinHeap:
         # Write your code here.
 		
 		self.size = len(array)
-        pass
+        return self.heap
 
     def siftDown(self):
 		if self.size > 0:
@@ -59,14 +59,17 @@ class MinHeap:
 		return None
 
     def remove(self):
-        # Write your code here.
+        removed = None
 		if self.size > 0:
-			
+			# swap top with last element so that it can be removed
+			self.heap[0], self.heap[self.size-1] = self.heap[self.size-1], self.heap[0]
+			removed = self.heap.pop()
+			self.siftDown()
 			self.size -= 1
-        pass
+        return removed
 
     def insert(self, value):
-        # Write your code here.
-		
+        self.heap.append(value)
+		self.siftUp()
 		self.size += 1
-        pass
+        return self.heap
