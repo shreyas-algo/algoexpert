@@ -2,7 +2,7 @@
 # Analysis: each opreation is O(1) time & O(1) space independently
 
 # Learning: 
-# a) `if var` is not the right way to check "not None" cz it won't pass even for `if 0`. Thus use `if var != None`
+# a) `if var` is not the right way to check "not None" cz it won't pass even for `if 0`. Thus use `if var is not None`
 # b) Storing tuples as keys in dictionary
 
 # Note: implementation can be done based on max & min lists also where you check the appropriate index (top). You dont need dictionaries. But both are fine

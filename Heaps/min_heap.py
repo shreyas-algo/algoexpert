@@ -4,8 +4,24 @@
 
 # Approach: Look at conceptual overview. 
 # The implementation is based on two basic methods: siftUp & siftDown
+# peek: return min. heap[0]
+# siftUp: works on last element. compare with parent and keep swapping if parent is larger in value
+# siftDown: works on top if no index passed. compare with smaller child and keep swapping if smaller child is smaller than the parent
+# insert: insert in end and siftUp
+# remove: removes top (heap only works on top - min value). First swap top with last element. Remove last (easier -- simple pop). Then siftDown
+# buildHeap: initialize with given array. Call siftDown on all on-leaf nodes starting from the last non-leaf node
+
+# extra:
+# 1. maintain heap size all the time (start from buildHeap) and keep updating on every insert / remove call so that it can be used in internal calls in constant time
+# 2. Indexing:
+# parent = int((index - 1)/2)
+# left_child = 2*index + 1
+# right_child = 2*index + 2
+
 # TODO: Write approach down
 # TODO: watch code walkthrough
+
+# Learning: As long as you understand the conceptual overview, code will be fine. Eg loko at the code. It might look complicated but the underlying logic is pretty straight forward (Look at conceptual overview)
 import math
 import sys
 class MinHeap:
@@ -15,8 +31,8 @@ class MinHeap:
 	
 	# O(N) time when implemented with siftDown (not nlogn cz majority siftDown calls take less time. It's only upper levels that take logn time). Look at conceptual overview
     def buildHeap(self, array):
+        # initialize heap with given array and its size
 		self.size = len(array)
-		# initialize heap with given array
 		self.heap = array
 		last_idx = self.size - 1
 		# get last element's parent
@@ -27,6 +43,7 @@ class MinHeap:
         return array
 
 	# O(logN) time
+    # index used for buildHeap() when you need to siftDown every parent
     def siftDown(self, index=None):
 		if self.size > 0:
 			if index is None:
@@ -34,7 +51,6 @@ class MinHeap:
 			else:
 				current = index
 			child = self.getSmallerChild(current)
-			# child = left if self.heap[left] < self.heap[right] else right
 			while child is not None and child < self.size:
 				if self.heap[current] > self.heap[child]:
 					self.heap[current], self.heap[child] = self.heap[child], self.heap[current]
