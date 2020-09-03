@@ -1,9 +1,9 @@
+# Approach: Look at conceptual overview. Simply followed definition of Suffix Trie
+
 # Do not edit the class below except for the
 # populateSuffixTrieFrom and contains methods.
 # Feel free to add new properties and methods
 # to the class.
-
-# Approach: Look at conceptual overview. Simply followed definition of Suffix Trie
 
 class SuffixTrie:
     def __init__(self, string):
@@ -25,5 +25,12 @@ class SuffixTrie:
 			current_dict[self.endSymbol] = True
 
     def contains(self, string):
-        # Write your code here.
-        pass
+        current_dict = self.root
+        for char in string:
+            if char not in current_dict:
+                return False
+            current_dict = current_dict[char]
+        if self.endSymbol in current_dict:
+            return True
+        return False
+
