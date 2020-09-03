@@ -12,6 +12,11 @@
 # median = top(minHeap) + top(maxHeap) / 2
 # if odd:
 # median = top(larger heap)
+
+# Learning:
+# 1. If you can solve it on paper, you can solve it in code. No matter how tough it may sound
+# Walk through the problem and solve on paper first.
+# 2. When you're using variables like `size` to optimize working (so that you don't call len() everytime), make sure that you update size as and when insert/remove operations on it are performed. eg in remove() method we had a small issue where we called siftDown before size was updated which ends up creating issues in edge cases when list runs out. size needs to be updated before siftUp & siftDown
 import math
 class ContinuousMedianHandler:
     def __init__(self):
