@@ -1,4 +1,14 @@
 # Approach: Look at conceptual overview. Simply followed definition of Suffix Trie
+# Construction: Create double loop to go over the suffixes in the described fashion. Assign current_dict back to root on every inner loop. Initialize current_dict[character] = {} or get existing current_dict[character] for every character depending on whether it exists or not. In the end of the inner loop, add * in the end
+# Contains: Until there are characters in the string, check that the current_dict can follow same character starting from root. If at any point it doesn't, return False. If all characters passed through, the current_dict should have a * for it to be a suffix
+
+# Analysis: 
+# Construction: O(n*n) space & O(n*n) time
+# Contains: O(m) time (where m is the length of the target string) & O(1) space
+
+# Learning: 
+# 1. If you understand the concept well, you will code well. Understand the question super well. Draw it out
+# 2. Then while coding, keep the drawing / conceptual overview / sample input/output in front of you for ease of visualizing test cases
 
 # Do not edit the class below except for the
 # populateSuffixTrieFrom and contains methods.
