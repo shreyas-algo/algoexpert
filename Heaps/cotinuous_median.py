@@ -27,11 +27,13 @@ class ContinuousMedianHandler:
 		self.minHeap = MinHeap()
 
     def insert(self, number):
+        # init
         if self.size == 0:
 			self.maxHeap.insert(number)
 			self.median = number
 			self.size += 1
 		else:
+            # compare against top of max heap to decide where the number will go
 			peek_max = self.maxHeap.peek()
 			if number > peek_max:
 				self.minHeap.insert(number)
@@ -57,6 +59,7 @@ class ContinuousMedianHandler:
     def getMedian(self):
         return self.median
 
+# ---- Heaps :
 # min heap
 class MinHeap:
     def __init__(self):
