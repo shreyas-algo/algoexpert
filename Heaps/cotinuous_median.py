@@ -37,6 +37,7 @@ class ContinuousMedianHandler:
 			larger, smaller = (self.maxHeap, self.minHeap) if self.maxHeap.size >= self.minHeap.size else (self.minHeap, self.maxHeap)
 			# if size disbalance, rearrange
 			if abs(self.maxHeap.size - self.minHeap.size) > 1:
+				print(self.size,self.maxHeap.heap,self.minHeap.heap)
 				removed = larger.remove()
 				smaller.insert(removed)
 				
@@ -90,8 +91,8 @@ class MinHeap:
 			# swap top with last element so that it can be removed
 			self.heap[0], self.heap[self.size-1] = self.heap[self.size-1], self.heap[0]
 			removed = self.heap.pop()
-			self.siftDown()
 			self.size -= 1
+			self.siftDown()
         return removed
 	
 	# O(logN) time
@@ -114,8 +115,10 @@ class MinHeap:
 	
 	# helper method. O(1) time
 	def getSmallerChild(self, current):
+		print(self.heap,self.size,current)
 		left = 2*current+1 if 2*current+1 < self.size else None
 		right = 2*current+2 if 2*current+2 < self.size else None
+		print(left,right)
 		child = None
 		if left is not None and right is not None:
 			child = left if self.heap[left] < self.heap[right] else right
