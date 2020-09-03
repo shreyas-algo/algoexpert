@@ -86,8 +86,8 @@ class MinHeap:
 			# swap top with last element so that it can be removed
 			self.heap[0], self.heap[self.size-1] = self.heap[self.size-1], self.heap[0]
 			removed = self.heap.pop()
-			self.siftDown()
 			self.size -= 1
+			self.siftDown()
         return removed
 	
 	# O(logN) time including balancing
