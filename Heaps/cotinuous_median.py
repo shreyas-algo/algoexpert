@@ -2,6 +2,8 @@
 # the insert method. Feel free to add new
 # properties and methods to the class.
 
+# TODO: Watch algoexpert's solution
+
 # Approach: 
 # maintain 2 heaps: max heap and min heap. initiate with first two numbers. first number (a[0]) being the top of a max heap and the second number (a[1]) being the top of a min heap. 
 # As any number smaller than a[0] comes for insertion, it goes to the max heap and then gets balanced (so that max heap property is maintained). Whereas a number bigger than a[0] comes, insert in the min heap and balace
