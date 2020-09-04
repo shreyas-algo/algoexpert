@@ -7,6 +7,8 @@
 # 1. Suffix tries are great for string comparison
 # 2. Discuss the meaning of "contains" with your interviewer - does it mean exact word or substring is okay. what about spaces - eg is " am " contained in "I am passionate!". How about "I a"?
 
+# TODO: Watch video
+
 def multiStringSearch(bigString, smallStrings):
   word_trie = SuffixTrie(bigString)
   print(word_trie.root)
@@ -42,7 +44,12 @@ class SuffixTrie:
         if char not in current_dict:
           return False
         current_dict = current_dict[char]
-    # Correct cz half words also considered right
-    if self.endSymbol in current_dict:
-      return True
+    # Commented is Correct cz half words also considered right -- it's not a suffix question. As long as character order is same. doesn't matter if word doesn't end there -- no need to check with self.endSymbol
+    # if self.endSymbol in current_dict:
+    #   return True
+
+    # Working for uncommented also: as each character ending is added in dictionary (repeating character) so co incidently algoexpert's test cases doesn't check this
+    # Check & close this debate:
+    # TODO: shouldn't work for uncommented in some case eg "hi" in this -- figure out
+    
     return True
