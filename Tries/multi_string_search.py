@@ -1,5 +1,7 @@
 # Approach: Create a suffix trie of all the characters in the sentence bigString. Run contains on every smallWord
-# Analysis: Creation: O(n*n) time & O(n) space where n is the length of the bigString
+# Analysis: 
+# Creation: O(n*n) time & O(n) space where n is the length of the words in the bigString
+# Contains: O(mn) time (n - length of smallStrings, m - length of every word in smallStrings) & O(1) space
 
 # Learning:
 # 1. Suffix tries are great for string comparison
@@ -21,14 +23,17 @@ class WordTrie:
         self.populateWordTrieFrom(string)
 
     def populateWordTrieFrom(self, string):
-        for word in string.split(" "):
-          # get back to root for every word
+        n = len(s)
+        result = []
+        for i in range(n): 
+          temp="" 
           current_dict = self.root
-          for char in word:
-            if char not in current_dict:
-              # if dictionary for a character doesn't exist, create it
-              current_dict[char] = {}
-            current_dict = current_dict[char]
+          for j in range(i,n): 
+              temp+=s[j]
+              if s[j] not in current_dict:
+                # if dictionary for a character doesn't exist, create it
+                current_dict[s[j]] = {}
+          current_dict = current_dict[s[j]]
           # add * at the end of a suffix
           current_dict[self.endSymbol] = True
 

@@ -1,7 +1,9 @@
 # Question (alteration of algoexpert question): Find if any word from given array of smallStrings appears EXACTLY in the given bigString
 
 # Approach: Create a trie of all the words in the sentence bigString (split by space). Run contains on every smallWord
-# Analysis: Creation: O(m) time where m is the length of the longest word & O(n) space where n is the length of the bigString
+# Analysis: 
+# Creation: O(n) time & O(n) space where n is the length of the words in the bigString
+# Contains: O(mn) time (n - length of smallStrings, m - length of every word in smallStrings) & O(1) space
 
 # Learning:
 # 1. Suffix tries are great for string comparison
