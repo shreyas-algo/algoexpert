@@ -38,6 +38,7 @@ class WordTrie:
             if char not in current_dict:
                 return False
             current_dict = current_dict[char]
-        if self.endSymbol in current_dict:
-            return True
+        # Correct cz half words also considered right
+        # if self.endSymbol in current_dict:
+        #     return True
         return True
