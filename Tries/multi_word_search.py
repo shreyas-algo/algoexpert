@@ -1,5 +1,7 @@
-# Approach: Create a suffix trie of all the characters in the sentence bigString. Run contains on every smallWord
-# Analysis: Creation: O(n*n) time & O(n) space where n is the length of the bigString
+# Question (alteration of algoexpert question): Find if any word from given array of smallStrings appears EXACTLY in the given bigString
+
+# Approach: Create a trie of all the words in the sentence bigString (split by space). Run contains on every smallWord
+# Analysis: Creation: O(m) time where m is the length of the longest word & O(n) space where n is the length of the bigString
 
 # Learning:
 # 1. Suffix tries are great for string comparison
