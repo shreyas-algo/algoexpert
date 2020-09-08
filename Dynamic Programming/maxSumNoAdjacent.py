@@ -11,8 +11,9 @@ def maxSubsetSumNoAdjacent(array):
 	result = []
 	result.append(array[0])
 	result.append(max(array[0], array[1]))
-    for idx,item in enumerate(array):
-		next_item = max(item+result[idx-2], result[idx-1])
+    # go over remaining array (skipping first two elements)
+    for idx in range(2, len(array)):
+		next_item = max(array[idx]+result[idx-2], result[idx-1])
 		result.append(next_item)
-		
+	# return final element
 	return result.pop()
