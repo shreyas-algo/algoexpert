@@ -10,10 +10,16 @@
 
 # Analysis: O(n) time and O(n) space
 
-# IMP Learning:
+# IMP Learnings:
 # 1. HINTS! They are there for the taking. Ask for help and hints if you can't breach a problem. 
 # It's much BETTER than bombing the inteview and not making any progress
 # Background: Was easily able to solve this question when read HINT #1: Try to create a solution array where at each index you store the maximum possible sum (by using alternate elements) until that index
+# -
+# 2. Dynamic Programming crux:
+# Solve smaller problems and use the solution of the subset to solve a bigger problem
+# Start thinking from smallest problem size and grow ahead. Almost opposite to recursion where you think for n and in the end decide base case
+
+# TODO: Possible optimizstion on O(n) space: Keep only three elements. You don't need the full array
 
 def maxSubsetSumNoAdjacent(array):
 	# aedge cases
