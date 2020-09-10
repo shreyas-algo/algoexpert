@@ -19,7 +19,7 @@
 # Solve smaller problems and use the solution of the subset to solve a bigger problem
 # Start thinking from smallest problem size and grow ahead. Almost opposite to recursion where you think for n and in the end decide base case
 
-# TODO: Possible optimizstion on O(n) space: Keep only three elements. You don't need the full array
+# TODO: optimization on O(n) space: Keep only three elements. You don't need the full array (Algoexpert codewalkthrough for more)
 
 def maxSubsetSumNoAdjacent(array):
 	# aedge cases
