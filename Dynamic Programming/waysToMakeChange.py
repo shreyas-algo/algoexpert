@@ -4,6 +4,8 @@ def numberOfWaysToMakeChange(n, denoms):
 		return 0
 	# ways stores number of ways to store a value i
 	ways = []
+	# number of ways to make a sum of 0 is 1. Use no coins
+	ways.append(1)
 	# calculated keeps track of pairs for which ways have already been added
 	# just declared here for saving space. re init in findWays function
 	calculated = set()
@@ -14,6 +16,13 @@ def numberOfWaysToMakeChange(n, denoms):
 		print(res)
 		ways.append(res)
 	return ways.pop()
+
+# def initialize(ways, denoms):
+# 	# number of ways to make a 0 is 1. Use no coin
+# 	ways.append(1)
+# 	min_denoms = denoms[1]
+# 	for denom in denoms:
+# 		ways
 
 def findWays(n, denoms, ways, calculated, min_denom):
 	current_ways = 0
