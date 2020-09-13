@@ -1,3 +1,5 @@
+#TODO: probable improvement of code if you use dictionary for ways instead of a list. where you can init the dictionary with ways[denoms] as 1
+
 def numberOfWaysToMakeChange(n, denoms):
 	# edge case
 	if len(denoms) == 0:
@@ -13,8 +15,9 @@ def numberOfWaysToMakeChange(n, denoms):
 	min_denom = min(denoms)
 	for i in range(1, n+1):
 		res = findWays(i, denoms, ways, calculated, min_denom)
-		print(res)
+		print("result:",i, res)
 		ways.append(res)
+	print(ways)
 	return ways.pop()
 
 # def initialize(ways, denoms):
@@ -31,21 +34,22 @@ def findWays(n, denoms, ways, calculated, min_denom):
 	if n < min_denom:
 		return 0
 	for denom in denoms:
-		current_denom = 0
+		if n == denom:
+			current_ways += 1
+			continue
+		
+		step = denom
 		# TODO: find better way to reinitialize a set
 		# reinitialize calculated for each denom calculation
 		calculated = {''}
-		while n >= denom:
-			if n == denom:
-				current_ways += 1
-				remaining = 0
-				calculated.add(frozenset([n, remaining]))
-			else:
-				current_denom += denom
-				remaining = n - denom
-				if frozenset([current_denom, remaining]) not in calculated:
-					current_ways += ways[current_denom] * ways[remaining]
-					calculated.add(frozenset([current_denom, remaining]))
-			n = remaining
+		while n - denom > 0:
+			remaining = n - denom
+			print("d",denom, remaining)
+			if frozenset([denom, remaining]) not in calculated:
+				current_ways += ways[denom] * ways[remaining]
+				calculated.add(frozenset([denom, remaining]))
+
+			print("----here", n, remaining)
+			denom = denom + step
 	return current_ways
 	
