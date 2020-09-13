@@ -16,6 +16,7 @@ def numberOfWaysToMakeChange(n, denoms):
 
 def findWays(n, denoms, ways, min_denom):
 	current_ways = 0
+	calculated = set()
 	print(n, denoms, ways)
 	# min_denom improves average case. Doesn't help the worst case
 	if n < min_denom:
@@ -26,6 +27,8 @@ def findWays(n, denoms, ways, min_denom):
 		elif n > denom:
 			remaining = n - denom
 			print("d",denom, remaining)
-			current_ways += ways[denom] * ways[remaining]
+			if frozenset([denom, remaining]) not in calculated:
+				current_ways += ways[denom] * ways[remaining]
+				calculated.add(frozenset([denom, remaining]))
 	return current_ways
 	
