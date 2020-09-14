@@ -29,7 +29,9 @@ def minNumberOfCoinsForChange(n, denoms):
 	else:
 		return -1
 
-# O(logd) 
+# takes in an sorted array in descending order & a target, returns the first number from left which is smaller or equal to the target. If no number is smaller than the given number, return None
+# Approach: Modified Binary search
+# Complexity: O(log d) where d is the length of the array
 def largestPossibleDivisor(array, target):
   length = len(array)
   lo = 0
