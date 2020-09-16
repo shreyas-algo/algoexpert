@@ -4,6 +4,11 @@
 # To understand create the table for:
 # {denom: [2,3,7], n: 12} | Output: 4
 
+# Learning:
+# 1. Remember what Prof Tran said: DP is easy if you can wisely decide what is your subproblem
+# Once you know how to break the problem down and how to merge the sub problem solutions, it's fairly simple.
+# To be optimized: Think different ways and try ways to solve a problem + Practice!
+
 def numberOfWaysToMakeChange(n, denoms):
 	# init ways . notice that ways[0] = 1. There's one way to make 0 is that you choose no coins. Init all other entries by 0
 	ways = []

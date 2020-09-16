@@ -4,7 +4,8 @@
 # Space: O(n) space where n is the amount value
 
 # Learning:
-# A greedy approach to start from max denom and keep dividing doesn't work here because eg 10 can be made by {4,3,3} whereas if you go by "keep dividing by max until possible" logic, you won't even get an answer. Greedy only works for certain type of denominations
+# 1. A greedy approach to start from max denom and keep dividing doesn't work here because eg 10 can be made by {4,3,3} whereas if you go by "keep dividing by max until possible" logic, you won't even get an answer. Greedy only works for certain type of denominations
+# 2. Coding problems have a pattern and you can use pattern from a different problem of similar nature. Coded the DP solution (after wrestling with the Greedy solution) in ~19 minutes. Based on the same logic as waysToMakeChange
 
 # Test following to verify your approach:
 # {"n": 10, "denoms": [3, 4]}  # Expected: 3 {4,3,3}  === Reteuns 3. All Ok!
