@@ -3,11 +3,11 @@
 # Time: O(nd) where n is the amount value and d is the number of denominations
 # Space: O(n) space where n is the amount value
 
-# Test following:
-# {"n": 10, "denoms": [3, 4]}  # Expected: 3 {4,3,3}  === Reteuns 3. All Ok!
+# Learning:
+# A greedy approach to start from max denom and keep dividing doesn't work here because eg 10 can be made by {4,3,3} whereas if you go by "keep dividing by max until possible" logic, you won't even get an answer. Greedy only works for certain type of denominations
 
-# Test following:
-# {"n": 10, "denoms": [3, 4]}  # Expected: 3 {4,3,3}
+# Test following to verify your approach:
+# {"n": 10, "denoms": [3, 4]}  # Expected: 3 {4,3,3}  === Reteuns 3. All Ok!
 
 # TODO: Watch video
 # To understand, draw on paper for {"n": 10, "denoms": [3, 4]} & {"n": 6, "denoms": [1, 3, 4]}
