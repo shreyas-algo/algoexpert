@@ -7,7 +7,9 @@
 # Possible solutions:
 # a) keep check on spiral_length == array_len and check this every time you append in spiral to avoid duplicates
 # b) add single row & single column specific condition in bottomRow & leftColumn printer: `if sRow == eRow: break` 
+# TODO: Can look at the particular edge case and solve (Look at algoexpert video)
 
+# can avoid (may not be necessaey):
 # TODO: Overall improved approach: If you need to approach this porblem with a solution which is both clean and correct without missing edge cases:
 # a) Implement perimeter solution
 # b) keep the while check based on spiral length (can avoid abstraction. not required per se)
