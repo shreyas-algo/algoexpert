@@ -13,5 +13,30 @@
 
 
 def levenshteinDistance(str1, str2):
-    # Write your code here.
-    pass
+	target_len = len(str2)
+	source_len = len(str1)
+	distance = []
+    # create distance matrix and init
+	for row in range(target_len+1):
+		for col in range(source_len+1):
+			if col == 0:
+				distance.append([row])
+				continue
+			if row == 0:
+				distance[row].append(col)
+			else:
+				distance[row].append(0)
+	
+	print(distance)
+	# enumerate with counter 1
+	for row, char2 in enumerate(str2, 1):
+  		for col, char1 in enumerate(str1, 1):
+			# print(row,col)
+			if char2 == char1:
+				distance[row][col] = distance[row-1][col-1]
+			else:
+				distance[row][col] = 1+min(distance[row-1][col-1],  distance[row][col-1],  distance[row-1][col])
+	print(distance)
+	return distance[target_len][source_len]
+			
+
