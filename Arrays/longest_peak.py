@@ -21,23 +21,23 @@ def longestPeak(array):
         
     return max_peak_length
 
-    def identifyPeaks(array, arr_len):
-        peaks = []
-        for idx in range(1, arr_len-1):
-            if array[idx] > array[idx-1] and array[idx] > array[idx+1]:
-                peaks.append(idx)
-        return peaks
+def identifyPeaks(array, arr_len):
+    peaks = []
+    for idx in range(1, arr_len-1):
+        if array[idx] > array[idx-1] and array[idx] > array[idx+1]:
+            peaks.append(idx)
+    return peaks
 
-    def getLeftExpansion(array, p_idx):
-        idx = p_idx-1	# initialized with p_idx-1 because a peak will definitely be larger than the immediate left. Definition of identifyPeaks
-        left_length = 1
-        while idx > 0:
-            if array[idx] > array[idx-1]:
-                left_length += 1
-                idx -= 1
-            else:
-                break
-        return left_length
+def getLeftExpansion(array, p_idx):
+    idx = p_idx-1	# initialized with p_idx-1 because a peak will definitely be larger than the immediate left. Definition of identifyPeaks
+    left_length = 1
+    while idx > 0:
+        if array[idx] > array[idx-1]:
+            left_length += 1
+            idx -= 1
+        else:
+            break
+    return left_length
 
 def getRightExpansion(array, p_idx, arr_len):
 	idx = p_idx+1	# initialized with p_idx+1 because a peak will definitely be larger than the immediate right. Definition of identifyPeaks
