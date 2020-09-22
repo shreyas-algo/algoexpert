@@ -1,3 +1,8 @@
+# Approach:
+# Analysis:
+
+# Learning:
+# 1. keys() gives an iterator. So if you change a dictionary while iterating it, create a copy of the keys. either list(dict.keys) or simply `for item in list(dict)` cz dict iteration is anyway on keys
 
 def maxSumIncreasingSubsequence(array):
 	# edge case
@@ -11,7 +16,7 @@ def maxSumIncreasingSubsequence(array):
 	result[max_sum] = {'sum': max_sum, 'values': [max_sum]}
 	for i in range(1, arr_len):
 		placed = False
-		for leading_num in result.keys():
+		for leading_num in list(result):
 			if array[i] > leading_num:
 				placed = True
 				result[array[i]] = result.pop(leading_num)
