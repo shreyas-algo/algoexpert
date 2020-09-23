@@ -11,6 +11,13 @@
 # 2. Also for 1. to be mitigated it was important that when a leading_num key was updated, it's original value was also restored in result 
 # 3. Also, deepcopy is important as you want seoarate copies of the dicitonary against leading_num cz you want independent edits on the dictionary & the inner list
 
+# Questions to ask | Interview:
+# 1. Will negative nubers exist? - Yes
+# 2. Will numbers repeat? - may need code update 
+
+# TODO: Watch video
+# TODO: Fix for negative values
+
 from copy import deepcopy
 def maxSumIncreasingSubsequence(array):
 	# edge case
