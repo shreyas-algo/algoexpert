@@ -15,21 +15,26 @@ def maxSumIncreasingSubsequence(array):
 	result = {}
 	max_sum = array[0]
 	max_sum_key = array[0]
-	result[max_sum] = {'sum': max_sum, 'values': [max_sum]}
+	target = array[0]
+	result[max_sum_key] = {'sum': max_sum, 'values': [max_sum]}
 	for i in range(1, arr_len):
 		placed = False
+		replace = {} 
+		max_resultant_sum = 0
 		for leading_num in sorted(list(result.keys()), reverse=True):
-			# print(array[i], leading_num)
+			print(array[i], leading_num)
 			if array[i] > leading_num:
+				print("in greater")
 				placed = True
 				
 				temp = result.pop(leading_num)
 				# place existing dict for leading_num back in dictionary before updating it as it can be used in a future possibility
-				result[leading_num] = deepcopy(temp)
+				replace[leading_num] = deepcopy(temp)
 				
 				result[array[i]] = temp
 				result[array[i]]['sum'] += array[i]
 				result[array[i]]['values'].append(array[i])
+				print(result[array[i]])
 				
 				# update max_sum if a greater sum created
 				if result[array[i]]['sum'] > max_sum:
@@ -39,7 +44,12 @@ def maxSumIncreasingSubsequence(array):
 		
 		if not placed:
 			result[array[i]] = {'sum': array[i], 'values': [array[i]]}
+		else:
+			for key in replace: 
+				result[key] = replace[key]
+			
 		print(array[i],result)
 		print("*******")
 	return [max_sum, result[max_sum_key]['values']]
+
 
