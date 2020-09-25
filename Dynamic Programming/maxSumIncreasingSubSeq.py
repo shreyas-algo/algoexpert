@@ -16,7 +16,7 @@
 # 2. Will numbers repeat? - may need code update 
 
 # TODO: Watch video
-# TODO: Fix for negative values
+# TODO: Add Fix for negative values
 
 from copy import deepcopy
 def maxSumIncreasingSubsequence(array):
