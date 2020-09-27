@@ -1,5 +1,8 @@
 # Approach:
-# At each step, maximise the resultant sum if an element (leading_number) is included (go through all places where it can be a leading num) and also keep a copy of existing equaltion it appends to ie. maintain the exieitng value for leading_num also just in case it can be ude son future
+# At each step, maximise the resultant sum. if an element (leading_number) is included (go through all places where it can be a leading num. ie all existing leading_nums which are smaller than array[i]) and also keep a copy of existing entry it appends to (overrides key) ie. maintain the exisitng value for leading_num also just in case it can be used in future
+# leading_nums: largest number in a particular sub-sequence
+# result[leading_num1: {}, leading_num2: {}] : holds the possibilities of sums across various leading_nums
+
 # Analysis: O(n*n) time & O(n*n) space cz you create a new keys dictionary eveytime and in worst case it can run n*n times
 
 # Learning:
@@ -45,24 +48,30 @@ def maxSumIncreasingSubsequence(array):
 				
 				possible_sum = result[leading_num]['sum'] + array[i]
 				
+                # current loop's consideration
                 # save the target_leading_num for which sum can be maximised
 				if possible_sum > max_resultant_sum:
 					target_leading_num = leading_num
 					max_resultant_sum = possible_sum
 				
+                # larger consideration. max_sum -- result
 				# update max_sum if a greater sum created
 				if possible_sum > max_sum:
 					max_sum = possible_sum
 					max_sum_key = array[i]
 				# break
 		
-        # make decision on how result[array[i]] will be initialized (does it add up to something ecisting or is it a new entry)
+        # make decision on how result[array[i]] will be updated (does it add up to something existing or is it a new entry)
 		if not to_be_placed:
+            # if the number not greater than any existing leading_num, create a new entry for it
 			result[array[i]] = {'sum': array[i], 'values': [array[i]]}
 		else:
+            # update result[leading_sum] to be led by array[i] (change key and dict's sum & value) for the one entry that cretaed max possible_sum
+            # Notice that there will be only a single value of the dict that you'll eventually update. cz if array[i] > leading_num1 & array[i] > leading_num2 (i.e array[i] can be a leading_num to both), you want to update the one value which gives you the highest possible_sum (tracked inside inner for loop)
+            # eg if result[30: {'sum': 40 'values':[10,30]}, 25: {'sum': 35 'values':[10,25]}...] and incoming number is 40, though 40 > both 25 & 30 (the leading_nums), it makes sense to include 40 in a sunsequence that reaps the max sum
 			print(">>>",target_leading_num)
 			temp = result.pop(target_leading_num)
-			# place existing dict for leading_num back in dictionary before updating it as it can be used in a future possibility
+			# place existing dict for leading_num back in dictionary before updating it's value as it can be used in a future possibility
 			result[target_leading_num] = deepcopy(temp)
 
             # update result and place an entry for the current array[i] which initializes from the dict value which was already there but whose leading_num was smaller and which could lead to the biggest possible sum
