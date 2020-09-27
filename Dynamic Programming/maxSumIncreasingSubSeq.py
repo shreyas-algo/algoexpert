@@ -27,6 +27,7 @@ def maxSumIncreasingSubsequence(array):
 		return None
     # init
 	result = {}
+	# could have init by array[0] but it fails for cases where negative numbers are involved
 	# for cases like [-1, 1] when negative numbers are involved. init with the first number is not enough. It needs to be the first non-negative number or the largest negative number if allNegative
 	max_sum, max_sum_key, all_negative = findFirstNonNegativeOrLargest(array, arr_len)
 	# if all negative, the answer is the largest number. No pattern can be greater
@@ -38,7 +39,7 @@ def maxSumIncreasingSubsequence(array):
 	for i in range(1, arr_len):
 		to_be_placed = False
 		max_resultant_sum = 0
-		for leading_num in sorted(list(result.keys()), reverse=True):
+		for leading_num in list(result.keys()):
 			print(array[i], leading_num, result[leading_num])
 			if array[i] > leading_num:
 				print("in greater")
