@@ -2,6 +2,8 @@
 # At each step, maximise the resultant sum if an element (leading_number) is included (go through all places where it can be a leading num) and also keep a copy of existing equaltion it appends to ie. maintain the exieitng value for leading_num also just in case it can be ude son future
 # Analysis:
 
+# TODO: Add analysis
+
 # Learning:
 # 1. keys() gives an iterator. So if you change a dictionary while iterating it, create a copy of the keys. either list(dict.keys) or simply `for item in list(dict)` cz dict iteration is anyway on keys
 # 2. copy of a dict does not create a copy of it's inner lists. To create a complete copy, use deepcopy (be cautious with this, it is time & space intensive)
@@ -16,7 +18,6 @@
 # 2. Will numbers repeat? - may need code update 
 
 # TODO: Watch video
-# TODO: Add Fix for negative values
 
 from copy import deepcopy
 def maxSumIncreasingSubsequence(array):
@@ -26,8 +27,11 @@ def maxSumIncreasingSubsequence(array):
 		return None
     # init
 	result = {}
-	max_sum = array[0]
-	max_sum_key = array[0]
+	# for cases like [-1, 1] when negative numbers are involved. init with the first number is not enough. It needs to be the first non-negative number or the largest negative number if allNegative
+	max_sum, max_sum_key, all_negative = findFirstNonNegativeOrLargest(array, arr_len)
+	# if all negative, the answer is the largest number. No pattern can be greater
+	if all_negative:
+		return [max_sum, [max_sum]]
 	result[max_sum_key] = {'sum': max_sum, 'values': [max_sum]}
     # required in inner for loop to maximise resultant sum
 	target_leading_num = array[0]
@@ -71,5 +75,21 @@ def maxSumIncreasingSubsequence(array):
 		print(array[i],result)
 		print("*******")
 	return [max_sum, result[max_sum_key]['values']]
+
+# O(n)
+# Returns the first non-negative number or the largest number if all negative numbers
+def findFirstNonNegativeOrLargest(array, arr_len):
+	max_val = array[0]
+	for i in range(arr_len):
+		if array[i] >= 0:
+			# all_negative = False
+			return [array[i], array[i], False]
+		if array[i] > max_val:
+			max_val = array[i]
+	# all_negative = True
+	return [max_val, max_val, True]
+		
+
+
 
 
