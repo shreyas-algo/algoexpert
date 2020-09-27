@@ -1,8 +1,6 @@
 # Approach:
 # At each step, maximise the resultant sum if an element (leading_number) is included (go through all places where it can be a leading num) and also keep a copy of existing equaltion it appends to ie. maintain the exieitng value for leading_num also just in case it can be ude son future
-# Analysis:
-
-# TODO: Add analysis
+# Analysis: O(n*n) time & O(n*n) space cz you create a new keys dictionary eveytime and in worst case it can run n*n times
 
 # Learning:
 # 1. keys() gives an iterator. So if you change a dictionary while iterating it, create a copy of the keys. either list(dict.keys) or simply `for item in list(dict)` cz dict iteration is anyway on keys
