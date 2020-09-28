@@ -1,7 +1,7 @@
 
 # Approach: Maintain a matrix (distance) of m+1*n+1 where you build the result one character at a time. Rows represent the target array one character at a time (starting from '' character) & columns represent source string chars (starting from '' character) matrix[row][col] represents lavenshtein distance from source[col] to target[row]. 
 # Notice that matrix[0][0] = '' & matrix[row][0] = row for all rows & matrix[0][col] = col for all columns
-# Notice that when source[col] ==  target[row] (ie both characters are same), result is same as matrix[row-1][col-1] cz you doncan just ignore the current character (as it's a no op)
+# Notice that when source[col] ==  target[row] (ie both characters are same), result is same as matrix[row-1][col-1] cz you can just ignore the current character (as it's a no op)
 # when it's unequal, it can be built from 1+min([row][col-1], [row-1][col], [row-1][col-1]) -- cz they are all the places from where [row][col] can be created (using append, delete, substitute) -- draw example matrix and see
 # Analysis: O(m*n) time & O(m*n) space where m: length of str1 & n: length of str2
 
