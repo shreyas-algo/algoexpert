@@ -1,6 +1,12 @@
+# Approach: Create matrix that keeps track of longest subsequence using the strings up to str1[:i] & str2[:j] one character at a time. Notice '' & '' have length of 0 and common: ''. Build matrix one row / col at a time
+# Analysis: O(n*m) time & O(n*m) space where n & m are lengths of strings
+
+# TODO: Watch video
 def longestCommonSubsequence(str1, str2):
     # init
+    # keeps track of max length of sub sequence at location i,j
 	result = []
+    # keeps track of longest subsequence using the strings up to str1[:i] & str2[:j]
 	resultant_string = []
 	# keeps track of string formed at every [row][col]
 	tracker = {}
