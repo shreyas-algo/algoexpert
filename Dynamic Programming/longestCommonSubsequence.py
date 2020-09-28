@@ -22,7 +22,7 @@ def longestCommonSubsequence(str1, str2):
 			# print(row, col)
 			if str1[row-1] == str2[col-1]:
 				result[row].append(1 + result[row-1][col-1])
-				resultant_string[row].append(str1[row-1] + resultant_string[row-1][col-1])
+				resultant_string[row].append(resultant_string[row-1][col-1] + str1[row-1])
 			else:
 				longer_row, longer_col = (row,col-1) if result[row][col-1] > result[row-1][col] else (row,col-1)
 				result[row].append(result[longer_row][longer_col])
