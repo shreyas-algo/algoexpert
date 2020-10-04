@@ -1,5 +1,8 @@
 # Approach: break in a problem of num + threeSum (we know that threeSum can be solved in O(n*n))
 # Analysis: O(n^3)
+
+# TODO: Implement Algoexpert's solution of O(n^2): Sum of pairs
+
 def fourNumberSum(array, targetSum):
     array.sort()
 	end = len(array)

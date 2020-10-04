@@ -1,6 +1,9 @@
-# Approach:
+# Approach: Keep track of start & end by following
+    # start: keep track of leftWall (index just before the sorting broke), update it if at any point you find a number if it's smaller than array[leftWall] because [leftWall] is basically the largest value in the sorted array on left (Also note that leftWall can't go further left than 0 i.e start will be at 0 after which any left shift is not possible)
+    # init: findFirstDip - find the first point from where the sort pattern breaks for starters and initialize tracking vars like start, end, leftWall & maxInside
 # Analysis: O(n^2) time worst case. & O(1) space
 
+# TODO: write approach
 # TODO: watch video
 
 # Learnings:
@@ -9,6 +12,7 @@
 # It helps: 
 # I) keeping track of what we're trying to achieve with the function 
 # II) avoiding silly mistakes like flipping the order of return values or off-by-one errors
+# you can also use some extra vars if it makes the code readable. eg leftWall here which will essentially be (start-1)
 
 def subarraySort(array):
 	arr_len = len(array)
