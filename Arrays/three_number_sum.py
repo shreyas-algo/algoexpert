@@ -5,6 +5,9 @@
 
 # TODO: Solve for non-distinct numbers
 
+# Learning:
+# If your solution complexity is O(n^2). Always think whether sort() will improve something (See approach II)
+
 def threeNumberSum(array, targetSum):
     result = []
     length = len(array)
