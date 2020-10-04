@@ -1,6 +1,16 @@
+# Approach:
+# Analysis: O(n^2) time worst case. & O(1) space
+
+# TODO: watch video
+
+# Learnings:
+# 1. Importance of Abstraction: When you can modularize the problem without hurting your asymptotic analysis. Do that! eg using findFirstDip() here to simplify the problem and initialize stuff. It could have been handled inside the main for loop but it would have complicated code and reduced readability
+# 2. BIG: Writing function signature: It is important and it extremely helps to write a function signature over it (params & returns). (Especially when working with >1 return values) 
+# It helps: 
+# I) keeping track of what we're trying to achieve with the function 
+# II) avoiding silly mistakes like flipping the order of return values or off-by-one errors
+
 def subarraySort(array):
-    start = -1
-	end = -1
 	arr_len = len(array)
 	if arr_len < 1:
 		return [-1, -1]
