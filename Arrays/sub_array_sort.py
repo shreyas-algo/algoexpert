@@ -29,19 +29,19 @@ def subarraySort(array):
 			maxInside = array[i]
 	return [start, end]
 
+# O(n)
 def findFirstDip(array, arr_len):
 	for i in range(arr_len-1):
 		if array[i] > array[i+1]:
 			return (i,i,array[i],array[i])
 	return (-1, -1, -1, -1)
 		
-
+# ~O(n)
 def goBackUntilSmaller(array, leftWall, target):
-	# reverse for loop on array from start
+	# reverse for loop on array from start to find a smaller numner than target
 	for i in range(leftWall, 0, -1):
 		if array[i] <= target:
 			return (i, i-1)
 	# if nothing smaller, set start to 0. 
-	# Note: ideally leftWall should be set to -1 here (semantically). but not used so all good
 	return (0, -1)
 		
