@@ -15,7 +15,8 @@ def subarraySort(array):
 	# if no dip found, it's already sorted
 	if start == -1:
 		return [-1, -1]
-
+	
+	print(start, end, leftWall, maxInside)
 	for i in range(start, arr_len):
 		# 1. update start until the largest number outside (maxOutside) is smaller than or equal to the number itself (array[i]) or start is set to 0
 		if  start != 0 and array[i] < array[leftWall]:
@@ -33,7 +34,7 @@ def subarraySort(array):
 def findFirstDip(array, arr_len):
 	for i in range(arr_len-1):
 		if array[i] > array[i+1]:
-			return (i,i,array[i],array[i])
+			return (i+1,i+1,i,array[i+1])
 	return (-1, -1, -1, -1)
 		
 # ~O(n)
