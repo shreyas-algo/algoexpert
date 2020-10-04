@@ -3,7 +3,6 @@
     # init: findFirstDip - find the first point from where the sort pattern breaks for starters and initialize tracking vars like start, end, leftWall & maxInside
 # Analysis: O(n^2) time worst case. & O(1) space
 
-# TODO: write approach
 # TODO: watch video
 
 # Learnings:
