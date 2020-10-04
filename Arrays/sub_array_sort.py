@@ -32,10 +32,12 @@ def subarraySort(array):
 	return [start, end]
 
 # O(n)
+# Finds start of the break in sorted pattern 
+# and returns start, end, leftWall, maxInside
 def findFirstDip(array, arr_len):
 	for i in range(arr_len-1):
 		if array[i] > array[i+1]:
-			return (i+1,i+1,i,array[i+1])
+			return (i,i,i-1,array[i])
 	return (-1, -1, -1, -1)
 		
 # ~O(n)
