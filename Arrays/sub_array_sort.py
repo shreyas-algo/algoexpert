@@ -38,11 +38,13 @@ def findFirstDip(array, arr_len):
 	return (-1, -1, -1, -1)
 		
 # ~O(n)
+# returns start (start of sub_array) & leftWall
 def goBackUntilSmaller(array, leftWall, target):
 	# reverse for loop on array from start to find a smaller numner than target
 	for i in range(leftWall, 0, -1):
 		if array[i] <= target:
-			return (i, i-1)
+			# which means leftWall found at i -- which means sub_array starts at i+1
+			return (i+1, i)
 	# if nothing smaller, set start to 0. 
-	return (0, -1)
+	return (0, 0)
 		
