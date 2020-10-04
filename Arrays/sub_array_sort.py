@@ -9,15 +9,13 @@ def subarraySort(array):
 	# start - start index from where array needs to be sorted
 	# end - end index until where array needs to be sorted
 	# leftWall - right end (index) of the sorted array on left aka index of largest value tracked outside sub_array (to be sorted) on left 
-	# maxInside - largest value tracked inside the sub_array
+	# maxInside - largest value tracked after the sub_array started
 	
 	start, end, leftWall, maxInside  = findFirstDip(array, arr_len)
 	# if no dip found, it's already sorted
 	if start == -1:
 		return [-1, -1]
-	# a value that may end up inside the sub_array and might turn into maxInside
-	# initialized as maxInside from findFirstDip
-	possibleMax = maxInside
+
 	for i in range(start, arr_len):
 		# 1. update start until the largest number outside (maxOutside) is smaller than or equal to the number itself (array[i]) or start is set to 0
 		if  start != 0 and array[i] < array[leftWall]:
@@ -26,11 +24,9 @@ def subarraySort(array):
 		# also when updating end, check if maxInside needs to be updated
 		if array[i] < maxInside:
 			end = i
-			if possibleMax > maxInside:
-				maxInside = possibleMax
-		# update possibleMax
-		if array[i] > possibleMax:
-			possibleMax = array[i]
+		# update maxInside
+		if array[i] > maxInside:
+			maxInside = array[i]
 	return [start, end]
 
 def findFirstDip(array, arr_len):
@@ -41,8 +37,11 @@ def findFirstDip(array, arr_len):
 		
 
 def goBackUntilSmaller(array, leftWall, target):
-	# leftWall = -1
 	# reverse for loop on array from start
-	for i in range(maxOutsideIdx, 0, -1):
-		if array[i] <= target
+	for i in range(leftWall, 0, -1):
+		if array[i] <= target:
+			return (i, i-1)
+	# if nothing smaller, set start to 0. 
+	# Note: ideally leftWall should be set to -1 here (semantically). but not used so all good
+	return (0, -1)
 		
