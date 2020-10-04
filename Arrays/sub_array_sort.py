@@ -11,6 +11,7 @@ def subarraySort(array):
 	# leftWall - right end (index) of the sorted array on left aka index of largest value tracked outside sub_array (to be sorted) on left 
 	# maxInside - largest value tracked after the sub_array started
 	
+	# O(n) in worst case (sorted array) but in that case, we return out
 	start, end, leftWall, maxInside  = findFirstDip(array, arr_len)
 	# if no dip found, it's already sorted
 	if start == -1:
@@ -41,7 +42,7 @@ def findFirstDip(array, arr_len):
 # returns start (start of sub_array) & leftWall
 def goBackUntilSmaller(array, leftWall, target):
 	# reverse for loop on array from start to find a smaller numner than target
-	for i in range(leftWall, 0, -1):
+	for i in range(leftWall, -1, -1):
 		if array[i] <= target:
 			# which means leftWall found at i -- which means sub_array starts at i+1
 			return (i+1, i)
