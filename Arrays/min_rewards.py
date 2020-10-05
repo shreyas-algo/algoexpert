@@ -15,6 +15,11 @@
 # Learning:
 # 1. Weighing two solutions and choosing the best (whichever ensures best results in an interview)
 # 2. Wriritng clean solutions is always easy to debug
+# 3. [BIG] [IMP] Realized that understanding questions is crucial. 
+# Spend time understanding the question. 
+# Draw it out on paper + chalk out a few test cases. That will come in handy when you're writing code
+# Code can be written in 10-15 minutes if you write clean code and understand the question really well.
+# [IMP] Always aim for a working solution first and then optimization
 
 # TODO: watch video
 
