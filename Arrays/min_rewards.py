@@ -1,4 +1,5 @@
-# Root approach: get min one by one and apply counting logic: if received min & previous min are adjacent, increment counter, else use the same counter
+# Root approach: create a rewards/counter array initialized by 0 (which will be result). get min from scores one by one and apply counting logic: for the position of the received min in the counter array, check the value of counter for adjacent positions and assign the higher_val+1 (as when coming across a number if counter array is already filled, they had a lower score than the current number)
+# note: counter = rewards
 
 # Approach I: Use heap to get min one by one and aply counting logic
 # Approach II: Create an index array from the numbers and sort the 
@@ -12,5 +13,17 @@
 
 # Implemented II:
 def minRewards(scores):
-    # Write your code here.
-    pass
+	scores_len = len(scores)
+	rewards = [0 for i in range(scores_len)]
+	indices = [i for i in range(scores_len)]
+	indices.sort(key=lambda x: scores[x])
+	for index in indices:
+		reward = getNextRewardValue(index, rewards, scores_len)
+		rewards[index] = reward
+	return sum(rewards)
+	
+def getNextRewardValue(index, rewards, arr_len):
+	left = rewards[index - 1] if index - 1 >= 0 else 0
+	right = rewards[index + 1] if index + 1 < arr_len else 0
+	return max(left, right) + 1
+	
