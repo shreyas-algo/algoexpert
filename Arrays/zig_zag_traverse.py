@@ -1,3 +1,12 @@
+# Approach:
+# Analysis:
+
+# Questions to ask:
+# 1. Does the input only have squares or should it also work for rectangles, single row, single column?
+
+# Learning:
+# 1. Solve a simpler version of the problem -- eg here solve just for squares and then expand your solution (eg solve just for thenfirst test case given)
+
 def zigzagTraverse(array):
 	res = []
 	row = 0
@@ -23,6 +32,7 @@ def plankUp(array, row, col, row_len, col_len, res):
 	r = row
 	c = col
 	# an until loop 
+    # this is more like a while True. The inside break is the actual condition that drives it. But this is to make sure that r & c never exceed bounds
 	while r < row_len and c < col_len:
 		print(r,c)
 		res.append(array[r][c])
