@@ -23,7 +23,8 @@ def plankUp(array, row, col, row_len, col_len, res):
 	r = row
 	c = col
 	# an until loop 
-	while True:
+	while r < row_len and c < col_len:
+		print(r,c)
 		res.append(array[r][c])
 		if r == col and c == row:
 			break
@@ -46,7 +47,7 @@ def planDown(array, row, col, row_len, col_len, res):
 	r = row
 	c = col
 	# an until loop 
-	while True:
+	while r < row_len and c < col_len:
 		res.append(array[r][c])
 		if r == col and c == row:
 			break
