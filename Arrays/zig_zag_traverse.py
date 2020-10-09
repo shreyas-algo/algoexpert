@@ -29,6 +29,7 @@ def plankUp(array, row, col, row_len, col_len, res):
 			break
 		r -= 1
 		c += 1
+	# set next r,c 
 	# reached final column
 	if c == n:
 		return (r+1,c)
@@ -40,6 +41,24 @@ def plankUp(array, row, col, row_len, col_len, res):
 		# 	return (r+1,c)
 		# Handled in parent while - mostly this case will never happen. This is like r==row_len-1 and c==col_len-1
 		# return (r,c)
+		
+def planDown(array, row, col, row_len, col_len, res):
+	r = row
+	c = col
+	# an until loop 
+	while True:
+		res.append(array[r][c])
+		if r == col and c == row:
+			break
+		r += 1
+		c -= 1
+	# set next r,c 
+	# reached first column
+	if c == 0:
+		return (r+1,c)
+	# reached last row: r == row_col-1
+	else:
+		return (r,c+1)
 		
 		
 	
