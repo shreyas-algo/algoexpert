@@ -13,9 +13,9 @@ def zigzagTraverse(array):
 	row += 1
 	# plank functions - append values in current plank and init next plank's row, col
 	while row < row_len and col < col_len:
-		if col == 0 or row == n:
+		if col == 0 or row == row_len-1:
 			row, col = plankUp(array, row, col, row_len, col_len, res)
-    	elif row == 0 or col == n:
+    	elif row == 0 or col == col_len-1:
 			row, col = planDown(array, row, col, row_len, col_len, res)
 	return res
 
@@ -31,7 +31,7 @@ def plankUp(array, row, col, row_len, col_len, res):
 		c += 1
 	# set next r,c 
 	# reached final column
-	if c == n:
+	if c == col_len-1:
 		return (r+1,c)
 	# reached top row - r == 0
 	else:
