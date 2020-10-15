@@ -26,11 +26,12 @@ def zigzagTraverse(array):
 			row, col = plankUp(array, row, col, row_len, col_len, res)
 			print("Next PlankDown",row,col)
     	elif row == 0 or col == col_len-1:
-			row, col = planDown(array, row, col, row_len, col_len, res)
+			row, col = plankDown(array, row, col, row_len, col_len, res)
 			print("Next PlankUp",row,col)
 	return res
 
 def plankUp(array, row, col, row_len, col_len, res):
+	# assignment to r,c not really required
 	r = row
 	c = col
 	# an until loop 
@@ -48,7 +49,8 @@ def plankUp(array, row, col, row_len, col_len, res):
 	else:
 		return (r+1,c)
 		
-def planDown(array, row, col, row_len, col_len, res):
+def plankDown(array, row, col, row_len, col_len, res):
+	# assignment to r,c not really required
 	r = row
 	c = col
 	# an until loop 
