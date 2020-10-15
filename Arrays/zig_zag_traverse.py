@@ -17,12 +17,11 @@ def zigzagTraverse(array):
 		return res
 	# considering symmetric shape
 	col_len = len(array[0])
-	matrix_len = row_len * col_len
 	# init first entry
 	res.append(array[row][col])
 	row += 1
 	# plank functions - append values in current plank and init next plank's row, col
-	while row < row_len and col < col_len and len(res) <= matrix_len:
+	while row < row_len and col < col_len:
 		if col == 0 or row == row_len-1:
 			row, col = plankUp(array, row, col, row_len, col_len, res)
 			print("Next PlankDown",row,col)
@@ -48,18 +47,6 @@ def plankUp(array, row, col, row_len, col_len, res):
 		return (r,c+1)
 	else:
 		return (r+1,c)
-	# set next r,c 
-	# reached final column
-	# if c == col_len-1:
-	# 	return (r+1,c)
-	# # reached top row - r == 0
-	# else:
-	# 	return (r,c+1)
-		# Handled in parent while
-		# if r+1 < row_len:
-		# 	return (r+1,c)
-		# Handled in parent while - mostly this case will never happen. This is like r==row_len-1 and c==col_len-1
-		# return (r,c)
 		
 def planDown(array, row, col, row_len, col_len, res):
 	r = row
@@ -72,13 +59,6 @@ def planDown(array, row, col, row_len, col_len, res):
 		r += 1
 		c -= 1
 	print("plankDown ends", r,c)
-	# set next r,c 
-	# reached first column
-	# if col == col_len-1:
-	# 	return (r+1,c)
-	# # reached last row: r == row_col-1
-	# else:
-	# 	return (r,c+1)
 	if r+1 < row_len:
 		return (r+1,c)
 	else:
