@@ -19,7 +19,10 @@ def zigzagTraverse(array):
 	col_len = len(array[0])
 	# init first entry
 	res.append(array[row][col])
-	row += 1
+	if row+1 < row_len:
+		row += 1
+	else:
+		col += 1
 	# plank functions - append values in current plank and init next plank's row, col
 	while row < row_len and col < col_len:
 		if col == 0 or row == row_len-1:
