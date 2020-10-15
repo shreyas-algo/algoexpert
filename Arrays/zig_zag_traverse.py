@@ -67,7 +67,7 @@ def planDown(array, row, col, row_len, col_len, res):
 	# an until loop 
 	while r < row_len and c < col_len:
 		res.append(array[r][c])
-		if r == row_len or c == 0:
+		if r == row_len - 1 or c == 0:
 			break
 		r += 1
 		c -= 1
