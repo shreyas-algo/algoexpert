@@ -25,11 +25,10 @@ def zigzagTraverse(array):
 	while row < row_len and col < col_len and len(res) <= matrix_len:
 		if col == 0 or row == row_len-1:
 			row, col = plankUp(array, row, col, row_len, col_len, res)
-			print("res",row,col)
+			print("Next PlankDown",row,col)
     	elif row == 0 or col == col_len-1:
 			row, col = planDown(array, row, col, row_len, col_len, res)
-			if (row,col) ==(-1,-1):
-				break
+			print("Next PlankUp",row,col)
 	return res
 
 def plankUp(array, row, col, row_len, col_len, res):
@@ -40,17 +39,24 @@ def plankUp(array, row, col, row_len, col_len, res):
 	while r < row_len and c < col_len:
 		print(r,c)
 		res.append(array[r][c])
-		if r == col and c == row:
+		if r == 0 or c == col_len-1:
 			break
 		r -= 1
 		c += 1
+	print("plankUp ends", r,c)
+	if c+1 < col_len:
+		return (r,c+1)
+	elif r+1 < row_len:
+		return (r+1,c)
+	else:
+		return (r,c)
 	# set next r,c 
 	# reached final column
-	if c == col_len-1:
-		return (r+1,c)
-	# reached top row - r == 0
-	else:
-		return (r,c+1)
+	# if c == col_len-1:
+	# 	return (r+1,c)
+	# # reached top row - r == 0
+	# else:
+	# 	return (r,c+1)
 		# Handled in parent while
 		# if r+1 < row_len:
 		# 	return (r+1,c)
@@ -63,11 +69,11 @@ def planDown(array, row, col, row_len, col_len, res):
 	# an until loop 
 	while r < row_len and c < col_len:
 		res.append(array[r][c])
-		if r == col and c == row:
+		if r == row_len or c == 0:
 			break
 		r += 1
 		c -= 1
-	print("==", r,c)
+	print("plankDown ends", r,c)
 	# set next r,c 
 	# reached first column
 	# if col == col_len-1:
@@ -80,6 +86,6 @@ def planDown(array, row, col, row_len, col_len, res):
 	elif c+1 < col_len:
 		return (r,c+1)
 	else:
-		return (-1,-1)
+		return (r,c)
 		
 	
