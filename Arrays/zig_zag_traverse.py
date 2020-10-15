@@ -17,16 +17,19 @@ def zigzagTraverse(array):
 		return res
 	# considering symmetric shape
 	col_len = len(array[0])
+	matrix_len = row_len * col_len
 	# init first entry
 	res.append(array[row][col])
 	row += 1
 	# plank functions - append values in current plank and init next plank's row, col
-	while row < row_len and col < col_len:
+	while row < row_len and col < col_len and len(res) <= matrix_len:
 		if col == 0 or row == row_len-1:
 			row, col = plankUp(array, row, col, row_len, col_len, res)
 			print("res",row,col)
     	elif row == 0 or col == col_len-1:
 			row, col = planDown(array, row, col, row_len, col_len, res)
+			if (row,col) ==(-1,-1):
+				break
 	return res
 
 def plankUp(array, row, col, row_len, col_len, res):
@@ -64,13 +67,19 @@ def planDown(array, row, col, row_len, col_len, res):
 			break
 		r += 1
 		c -= 1
+	print("==", r,c)
 	# set next r,c 
 	# reached first column
-	if c == 0:
+	# if col == col_len-1:
+	# 	return (r+1,c)
+	# # reached last row: r == row_col-1
+	# else:
+	# 	return (r,c+1)
+	if r+1 < row_len:
 		return (r+1,c)
-	# reached last row: r == row_col-1
-	else:
+	elif c+1 < col_len:
 		return (r,c+1)
-		
+	else:
+		return (-1,-1)
 		
 	
