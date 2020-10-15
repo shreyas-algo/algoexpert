@@ -24,6 +24,7 @@ def zigzagTraverse(array):
 	while row < row_len and col < col_len:
 		if col == 0 or row == row_len-1:
 			row, col = plankUp(array, row, col, row_len, col_len, res)
+			print("res",row,col)
     	elif row == 0 or col == col_len-1:
 			row, col = planDown(array, row, col, row_len, col_len, res)
 	return res
