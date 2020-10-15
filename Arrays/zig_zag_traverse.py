@@ -46,10 +46,8 @@ def plankUp(array, row, col, row_len, col_len, res):
 	print("plankUp ends", r,c)
 	if c+1 < col_len:
 		return (r,c+1)
-	elif r+1 < row_len:
-		return (r+1,c)
 	else:
-		return (r,c)
+		return (r+1,c)
 	# set next r,c 
 	# reached final column
 	# if c == col_len-1:
@@ -83,9 +81,7 @@ def planDown(array, row, col, row_len, col_len, res):
 	# 	return (r,c+1)
 	if r+1 < row_len:
 		return (r+1,c)
-	elif c+1 < col_len:
-		return (r,c+1)
 	else:
-		return (r,c)
+		return (r,c+1)
 		
 	
