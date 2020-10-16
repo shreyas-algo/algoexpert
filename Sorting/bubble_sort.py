@@ -1,6 +1,8 @@
 # Approach: Iterate through the array and keep swapping a number at i with i+1 until you can find inversions ([i] > [i+1]). The moment you don't do any swaps, break out. Notice that on every iteration, the largest number will be placed at the last
 # Analysis: O(n*n) time & O(1) space
 
+# TODO: can add the minor optimization where you do not check the number placed at last cz you anyway know it is in its right place
+
 def bubbleSort(array):
 	arr_len = len(array)
 	while True:
