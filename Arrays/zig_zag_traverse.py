@@ -1,5 +1,5 @@
-# Approach:
-# Analysis:
+# Approach: Draw on paper and observe that the zigzag traverse is nothing but a combination of plank-ups & plank-downs with one initalizing the start position of the other. Once you have a start position, plankUp or plankDown is simply going up/down until you are about to cross a boundary of the input matrix
+# Analysis: O(row*col) time & O(row*col) space (for result)
 
 # Questions to ask:
 # 1. Does the input only have squares or should it also work for rectangles, single row, single column?
@@ -25,9 +25,11 @@ def zigzagTraverse(array):
 		col += 1
 	# plank functions - append values in current plank and init next plank's row, col
 	while row < row_len and col < col_len:
+		# plankUp will happen either from a left boundary or a bottom boundary
 		if col == 0 or row == row_len-1:
 			row, col = plankUp(array, row, col, row_len, col_len, res)
 			print("Next PlankDown",row,col)
+		# plankDown will happen either from a top boundary or a right boundary
     	elif row == 0 or col == col_len-1:
 			row, col = plankDown(array, row, col, row_len, col_len, res)
 			print("Next PlankUp",row,col)
@@ -42,11 +44,13 @@ def plankUp(array, row, col, row_len, col_len, res):
 	while r < row_len and c < col_len:
 		print(r,c)
 		res.append(array[r][c])
+		# as soon as the plank reaches, top or right boundary, break
 		if r == 0 or c == col_len-1:
 			break
 		r -= 1
 		c += 1
 	print("plankUp ends", r,c)
+	# preference to right move, if available
 	if c+1 < col_len:
 		return (r,c+1)
 	else:
@@ -59,11 +63,13 @@ def plankDown(array, row, col, row_len, col_len, res):
 	# an until loop 
 	while r < row_len and c < col_len:
 		res.append(array[r][c])
+		# as soon as the plank reaches, bottom or left boundary, break
 		if r == row_len - 1 or c == 0:
 			break
 		r += 1
 		c -= 1
 	print("plankDown ends", r,c)
+	# preference to bottom move, if available
 	if r+1 < row_len:
 		return (r+1,c)
 	else:
