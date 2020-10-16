@@ -5,7 +5,8 @@
 # 1. Does the input only have squares or should it also work for rectangles, single row, single column?
 
 # Learning:
-# 1. Solve a simpler version of the problem -- eg here solve just for squares and then expand your solution (eg solve just for thenfirst test case given)
+# 1. IMP: SIMPLIFY PROBLEM! Break a complex problem in an easier problem. eg broken down to plankUp & plankDown here
+# 2. Solve a simpler version of the problem -- eg here solve just for squares and then expand your solution (eg solve just for thenfirst test case given)
 
 def zigzagTraverse(array):
 	res = []
