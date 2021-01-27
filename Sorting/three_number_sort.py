@@ -1,3 +1,5 @@
+# TODO: OPtimize: Solve in O(n) ?
+
 # Approach: Used basic python method of sorting an array based on a key 
 # Analysis: O(n log n) where n is size of array
 
@@ -8,11 +10,38 @@
 # Questions to ask:
 # 1. Will the order be necessarily increasing or decreasing - NO eg desired order can be [0, 1, -1] (arbitrary order)
 
+# Approach III: count occurences of each item and place in order one by one
+# O(n) time, O(1) space
+# note that count_dict takes O(1) space as it will have at max 3 entries
+def threeNumberSort(array, order):
+    count_dict = count_occurences(array, order)
+	start = 0
+	for item in order:
+		count = count_dict.get(item, 0)
+		end = start + count
+		place_item_in_correct_place(array, start, end, item)
+		start = end
+	return array
+
+def count_occurences(array, order):
+	count_dict = {}
+	for item in array:
+		existing_val = count_dict.setdefault(item, 0)
+		count_dict[item] = existing_val + 1
+	return count_dict
+
+def place_item_in_correct_place(array, start, end, item):
+	for i in range(start, end):
+		array[i] = item
+	
+# ---
+
 # Approach I:
 def threeNumberSort(array, order):
     array.sort(key=lambda x: order.index(x))
 	return array
 
+# ---
 
 # Approach II:
 # Use modified sort algorithm to perform comparison based on order array
