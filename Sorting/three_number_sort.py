@@ -1,6 +1,10 @@
 # Approach: Used basic python method of sorting an array based on a key 
 # Analysis: O(n log n) where n is size of array
 
+# Learnings:
+# 1. Sorting an array based on values / indices of another array
+# 2. Important thing to note here: Complexity is still mostly dependent on complexity of sort here because secondary array is constant size (3). or else the .index() will also contrbute O(m) where m is length of secondary array
+
 # Questions to ask:
 # 1. Will the order be necessarily increasing or decreasing - NO eg desired order can be [0, 1, -1] (arbitrary order)
 
