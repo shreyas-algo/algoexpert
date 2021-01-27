@@ -1,9 +1,10 @@
-# TODO: OPtimize: Solve in O(n) ?
+# TODO: Watch video
 
 # Approach: Used basic python method of sorting an array based on a key 
 # Analysis: O(n log n) where n is size of array
 
 # Learnings:
+# 0. IMP: When a desired order (or sorting result) given and the guarantee that each element in array will have an entry in order, solution possible in O(n)
 # 1. Sorting an array based on values / indices of another array
 # 2. Important thing to note here: Complexity is still mostly dependent on complexity of sort here because secondary array is constant size (3). or else the .index() will also contrbute O(m) where m is length of secondary array
 
