@@ -1,6 +1,11 @@
+# Approach: sort indices based on task length. Then, assign batches of tasks to the workers in alternating fashion (first by decreasing task length from max task len & then by increasing task length) so that the pair sum remains minimum
+# Analysis: O(n log n)
+
+# TODO: watch video
 from collections import deque
 
-
+# TODO: add solution which simply works for 2k. Will not need the "round" consideration
+# can even put the round consideration in a separate function which may or may not be used
 
 # can ignore below solution as it goes out of scope of question
 # Approach Ib: Same solution as above. This is just more dynamic and doesn't expect only 2k tasks
