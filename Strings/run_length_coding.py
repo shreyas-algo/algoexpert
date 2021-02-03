@@ -1,3 +1,6 @@
+# Questions to ask:
+# 1. Will all the As or Bs etc be stacked together? - No. eg it can be: "aAaAaaaaaAaaaAAAABbbbBBBB" So simply creating count dict won't work
+
 # 10/15 passing
 def runLengthEncoding(string):
     count_map = create_count_map(string)
