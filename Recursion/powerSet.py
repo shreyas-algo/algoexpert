@@ -11,6 +11,7 @@
 # result: list holding result
 # power_set: set holding passed values
 # TODO: consider doing with a single set
+# Method I: Recursion
 def powerset(array, result = [], power_set = set()):
     # add the whole array itself
 	if tuple(array) not in power_set:
@@ -29,3 +30,6 @@ def powerset(array, result = [], power_set = set()):
 			powerset(remaining, result, power_set)
 			power_set.add(tuple(remaining))
 	return result
+
+# Method II: Bit manipulation + backtrack
+# https://www.youtube.com/watch?v=RnlHPR0lyOE
