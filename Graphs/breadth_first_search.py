@@ -10,6 +10,7 @@ class Node:
 
     def breadthFirstSearch(self, array):
         access = deque([self])
+        # TODO: instead of using len(access) all the time. Use length var to keep track of the length
         while len(access) > 0:
             node = access.popleft()
             array.append(node.name)
